@@ -1,0 +1,8 @@
+<file>
+  <availablewithoutlogin>F</availablewithoutlogin>
+  <bundleable>F</bundleable>
+  <description>When a contract is selected on an estimate (upsell), this script sets the value of additional fields based on the selected contract.</description>
+  <generateurltimestamp>F</generateurltimestamp>
+  <hideinbundle>F</hideinbundle>
+  <isinactive>F</isinactive>
+</file>
