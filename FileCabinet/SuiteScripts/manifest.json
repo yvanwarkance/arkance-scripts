@@ -1,0 +1,8 @@
+[
+    {
+        "name": "./ARKA_SUE_NBEPersonas",
+        "units": 100,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    }
+]
