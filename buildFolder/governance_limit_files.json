@@ -1,0 +1,16 @@
+{
+    "BundleInstallationScript": 10000,
+    "ClientScript": 1000,
+    "MapReduceScript": null,
+    "MassUpdateScript": 1000,
+    "PortletScript": 1000,
+    "RESTletScript": 5000,
+    "ScheduledScript": 10000,
+    "SDFInstallationScript": 10000,
+    "SuiteletsScript": 1000,
+    "UserEventScript": 1000,
+    "WorkflowActionScript": 1000,
+    "CorePlugIns": "VARIES",
+    "CustomPlugIns": 10000,
+    "SSPApplicationScripts": 1000
+}

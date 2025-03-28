@@ -1,0 +1,12 @@
+{
+  "Estimate": {
+    "UserEventScript": {
+      "dispatcher1": [
+        {
+          "name": "ARKA_SUE_NBEPersonas",
+          "units": 100
+        }
+      ]
+    }
+  }
+}

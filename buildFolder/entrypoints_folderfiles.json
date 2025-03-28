@@ -1,0 +1,37 @@
+[
+    {
+        "type": "ClientScript",
+        "folderName": "Client Scripts",
+        "entrypoints": [
+            "fieldChanged",
+            "lineInit",
+            "localizationContextEnter",
+            "localizationContextExit",
+            "pageInit",
+            "postSourcing",
+            "saveRecord",
+            "sublistChanged",
+            "validateDelete",
+            "validateField",
+            "validateInsert",
+            "validateLine"
+        ]
+    },
+    {
+        "type": "UserEventScript",
+        "folderName": "User Event Scripts",
+        "entrypoints": [
+            "afterSubmit",
+            "beforeSubmit",
+            "beforeLoad",
+            "context.UserEventType"
+        ]
+    },
+    {
+        "type": "WorkflowActionScript",
+        "folderName": "Workflow Action Scripts",
+        "entrypoints": [
+            "onAction"
+        ]
+    }
+]
