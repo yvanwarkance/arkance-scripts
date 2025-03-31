@@ -12,6 +12,7 @@
                         <loglevel>DEBUG</loglevel>
                         <recordtype>ESTIMATE</recordtype>
                         <status>RELEASED</status>
+                        <runasrole>ADMINISTRATOR</runasrole>
                     </scriptdeployment>
                 </scriptdeployments>
             </usereventscript>       

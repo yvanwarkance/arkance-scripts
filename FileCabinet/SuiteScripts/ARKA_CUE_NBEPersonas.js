@@ -3,7 +3,7 @@
  * @NScriptType ClientScript
  * @NModuleScope SameAccount
  */
-define(['N/query'], (query) => {
+define(['N/query', 'N/log'], (query, log) => {
     var dropDownList = []
     let contactsObj = {}
     let shippingObj = {}
@@ -23,6 +23,13 @@ define(['N/query'], (query) => {
      * @governance 0 unit
      */
     function pageInit(scriptContext) {
+        log.debug({
+            title: 'ARKA_CUE_NBEPersonas',
+            details: {
+                title: 'Loading the script ARKA_CUE_NBEPersonas',
+                entrypoint: 'pageInit',
+            },
+        })
         let currRec = scriptContext.currentRecord
         //Transform == Copy
         if (currRec.type == 'opportunity' || currRec.type == 'estimate') {

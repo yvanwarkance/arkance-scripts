@@ -14,7 +14,8 @@
  * selected contract.
  *
  */
-define(['N/query', 'SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/record', 'N/ui/message'], function ( //function (query, record, BBE_LIB_GenericFunctionsSS2, search) { // jshint ignore:line
+define(['N/query', 'SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/record', 'N/ui/message'], function (
+    //function (query, record, BBE_LIB_GenericFunctionsSS2, search) { // jshint ignore:line
     query,
     bbeLib,
     record,

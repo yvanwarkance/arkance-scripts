@@ -4,7 +4,7 @@
  * @NScriptType UserEventScript
  * @NModuleScope SameAccount
  */
-define(['N/ui/serverWidget', 'N/query', 'N/runtime'], function (serverWidget, query, runtime) {
+define(['N/ui/serverWidget', 'N/query', 'N/runtime', 'N/log'], function (serverWidget, query, runtime, log) {
     var dropDownList = []
 
     /**
@@ -17,6 +17,13 @@ define(['N/ui/serverWidget', 'N/query', 'N/runtime'], function (serverWidget, qu
      *
      */
     function beforeLoad(scriptContext) {
+        log.debug({
+            title: 'ARKA_SUE_NBEPersonas',
+            details: {
+                title: 'Loading the script ARKA_SUE_NBEPersonas',
+                entrypoint: 'beforeLoad',
+            },
+        })
         let form = scriptContext.form
         if (
             scriptContext.type == scriptContext.UserEventType.EDIT ||

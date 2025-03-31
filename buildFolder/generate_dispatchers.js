@@ -150,7 +150,7 @@ try {
         fs.writeFileSync(finalPath, dispatcherFile)
 
         // Also create the dispatcher object relative to the script type
-        const baseObjectsPath = "./Objects"
+        const baseObjectsPath = './Objects'
         const filename = singleDispatcher.path.split('/').pop()
         const scriptDeploymentId = `customdeploy${truncateText(filename.replace('ARKA', '').replace('.js', '').toLowerCase(), 20)}`
         const scriptId = `customscript${truncateText(filename.replace('ARKA', '').replace('.js', '').toLowerCase(), 25)}`
@@ -169,6 +169,7 @@ try {
                         <loglevel>DEBUG</loglevel>
                         <recordtype>${singleDispatcher.recordType.replace(' ', '_').toUpperCase()}</recordtype>
                         <status>RELEASED</status>
+                        ${singleDispatcher.scriptType.toLowerCase() !== 'clientscript' && `<runasrole>ADMINISTRATOR</runasrole>`}
                     </scriptdeployment>
                 </scriptdeployments>
             </${singleDispatcher.scriptType.toLowerCase()}>       
@@ -184,7 +185,9 @@ try {
             objectPath: objectPath,
             recordType: singleDispatcher.recordType,
             scriptType: singleDispatcher.scriptType,
-            dispatcherFilesContents: dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => singleDispatcherHeaderPath.headerModuleName),
+            dispatcherFilesContents: dispatcherHeaderPaths.map(
+                (singleDispatcherHeaderPath) => singleDispatcherHeaderPath.headerModuleName
+            ),
         })
     })
 
@@ -192,10 +195,12 @@ try {
     fs.writeFileSync(`${currentFolderPath}/deployfile.json`, JSON.stringify(dispatchersData, null, 2))
 
     // Write stats about the dispatcher files
-    console.log("Summary of the dispatcher files to be uploaded:")
-    for(const [index, singleDispatcher] of dispatchersData.entries()) {
-        console.log(`- ${index + 1}/${dispatchersData.length} dispatcher file of type ${singleDispatcher.scriptType} will be uploaded for the ${singleDispatcher.recordType} record (${singleDispatcher.dispatcherFilesContents.length} file${singleDispatcher.dispatcherFilesContents.length > 1 ? 's' : ''} included)`)
-        if(index < dispatchersData.length - 1) {
+    console.log('Summary of the dispatcher files to be uploaded:')
+    for (const [index, singleDispatcher] of dispatchersData.entries()) {
+        console.log(
+            `- ${index + 1}/${dispatchersData.length} dispatcher file of type ${singleDispatcher.scriptType} will be uploaded for the ${singleDispatcher.recordType} record (${singleDispatcher.dispatcherFilesContents.length} file${singleDispatcher.dispatcherFilesContents.length > 1 ? 's' : ''} included)`
+        )
+        if (index < dispatchersData.length - 1) {
             console.log('////////////////////////////')
         }
     }
