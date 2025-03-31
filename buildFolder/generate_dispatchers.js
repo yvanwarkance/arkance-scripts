@@ -1,13 +1,205 @@
-const fs = require("fs");
-const path = require("path");
-const console = require("console");
-const process = require("process");
-const dispatcherManifest = JSON.parse(fs.readFileSync("./buildFolder/dispatcher_manifest.json", "utf8"));
+const fs = require('fs')
+const path = require('path')
+const console = require('console')
+const process = require('process')
+const currentFolderPath = './buildFolder/'
+const dispatcherManifest = JSON.parse(fs.readFileSync(`${currentFolderPath}dispatcher_manifest.json`, 'utf8'))
+const entrypointsFolderFiles = JSON.parse(fs.readFileSync(`${currentFolderPath}entrypoints_folderfiles.json`, 'utf8'))
 
-// Loop through the dispatcherManifest and create a new object with the dispatcher name as the key and the script name and units as the value
+// Custom function that truncates the text to the 40 characters limit
+const truncateText = (text, limit = 40) => {
+    return text.length > limit ? text.substring(0, limit) : text
+}
+
+// Create dynamically dispatcher files and host the endpoints from each files into them
 try {
-    
-} catch (err){
-    console.error("Something went wrong creating deploy files: ", err);
-    process.exit(1);
+    console.log('Generating dispatchers files...')
+
+    const dispatcherFiles = []
+    const basePath = './FileCabinet/SuiteScripts'
+    const basePathOutputFolder = `${basePath}/Codes/Scripts/Records`
+
+    // Iterate over each record type in the manifest to determine with dispatcher files needs to be created
+    Object.entries(dispatcherManifest).forEach(([recordType, scriptTypes]) => {
+        // The key is the record type, the value is the script types
+        Object.entries(scriptTypes).forEach(([scriptType, dispatchers]) => {
+            // Map first the script type to the correct script type folder
+            const matchingScriptTypeFolder = entrypointsFolderFiles.find(
+                (singleEntryPoint) => singleEntryPoint.type === scriptType
+            )
+
+            // Then we need to build the path for creating each dispatcher file
+            Object.entries(dispatchers).forEach(([dispatcher, dispatcherContent]) => {
+                const singleDispatcher = {
+                    path: `${basePathOutputFolder}/${recordType}/${matchingScriptTypeFolder.folderName}/${matchingScriptTypeFolder.fileNomenclature}_${recordType.substring(0, 3)}_${dispatcher}`,
+                    dispatcherContent: dispatcherContent,
+                    recordType: recordType,
+                    scriptType: scriptType,
+                    version: '2.1',
+                }
+                dispatcherFiles.push(singleDispatcher)
+            })
+        })
+    })
+
+    // Iterate over each dispatcherFile and prepare the headers and body to be written into the file
+    const dispatchersData = []
+    dispatcherFiles.forEach((singleDispatcher) => {
+        const dispatcherHeaderPaths = []
+        const dispatcherBodyFunctions = []
+
+        // At the dispatcher level, we need to intelligently scan for the dispatcher contents
+        // To get the headers & the entry points to be added into the dispatcher
+        for (const singleDispatcherContent of singleDispatcher.dispatcherContent) {
+            let singleDispatcherContentPath = singleDispatcherContent.name
+            const tableSingleDispatcherContent = singleDispatcherContent.name.split('\\')
+            let singleDispatcherContentModuleName = tableSingleDispatcherContent[
+                tableSingleDispatcherContent.length - 1
+            ].replace('.js', '')
+            if (singleDispatcherContent.name.includes('Codes\\')) {
+                singleDispatcherContentPath = '../../../../' + singleDispatcherContentPath.replace('Codes\\', '')
+            } else {
+                singleDispatcherContentPath = '../../../../../' + singleDispatcherContentPath
+            }
+
+            // Access through the contents
+            const singleDispatcherContentFile = fs.readFileSync(`${basePath}/${singleDispatcherContent.name}`, 'utf8')
+
+            // Then try to look up the content of that file, append the entrypoints that have been declared in that content
+            // In the list of dipatcherBodyFunctions
+            const availableEntryPointForScriptType = entrypointsFolderFiles.filter(
+                (singleEntryPoint) => singleEntryPoint.type === singleDispatcher.scriptType
+            )
+
+            // List for entry points and append them (If any) in the dispatcherBodyFunctions array
+            for (const singleEntryPoint of availableEntryPointForScriptType[0].entrypoints) {
+                if (singleDispatcherContentFile.includes(singleEntryPoint)) {
+                    dispatcherBodyFunctions.push(singleEntryPoint)
+                }
+            }
+
+            // Append the path to the dispatcherHeaderPaths array
+            // Buf if the headerModuleName already exists, we need to append the moduleName with the index number
+            if (
+                dispatcherHeaderPaths.find(
+                    (singleDispatcherHeaderPath) =>
+                        singleDispatcherHeaderPath.headerModuleName === singleDispatcherContentModuleName
+                )
+            ) {
+                throw new Error(`
+                    The file name ${singleDispatcherContentModuleName} already exists in the dispatcherHeaderPaths array
+                    Please change the name of the file to avoid conflicts when compiling
+                `)
+            }
+
+            dispatcherHeaderPaths.push({
+                headerPath: singleDispatcherContentPath.replace(/\\/g, '/'),
+                headerModuleName: singleDispatcherContentModuleName,
+            })
+        }
+
+        const isLocal = process.argv.includes('--local')
+
+        // Build the dispatcher files based on the script type and the version
+        let dispatcherFile = `
+            /**
+             * @NApiVersion ${singleDispatcher.version}
+             * @NScriptType ${singleDispatcher.scriptType}
+             * @NModuleScope SameAccount
+             * 
+             * This file has been autogenerated ${isLocal ? 'in a local CI environment' : 'in a CI environment'}
+             */
+            define([
+                ${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => `"${singleDispatcherHeaderPath.headerPath}"`).join(',')}
+            ],
+
+            function(
+                ${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => singleDispatcherHeaderPath.headerModuleName).join(',')}
+            ) {
+                
+                // Display simply entry points detected as functions
+                ${dispatcherBodyFunctions
+                    .map(
+                        (singleDispatcherBodyFunction) =>
+                            `
+                    const ${singleDispatcherBodyFunction} = (scriptContext) => {
+                        ${dispatcherHeaderPaths
+                            .map(
+                                (singleDispatcherHeaderPath) =>
+                                    `${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction}(scriptContext);`
+                            )
+                            .join('')}
+                    };`
+                    )
+                    .join('\n')}
+
+                return {
+                    ${dispatcherBodyFunctions
+                        .map(
+                            (singleDispatcherBodyFunction, index) =>
+                                `${singleDispatcherBodyFunction}: ${singleDispatcherBodyFunction}${index < dispatcherBodyFunctions.length - 1 ? ',' : ''}`
+                        )
+                        .join('\n                    ')}
+                }
+            });
+        `
+
+        const finalPath = `${singleDispatcher.path}.js`
+
+        // Append the dispatcher file to the respective path
+        fs.writeFileSync(finalPath, dispatcherFile)
+
+        // Also create the dispatcher object relative to the script type
+        const baseObjectsPath = "./Objects"
+        const filename = singleDispatcher.path.split('/').pop()
+        const scriptDeploymentId = `customdeploy${truncateText(filename.replace('ARKA', '').replace('.js', '').toLowerCase(), 20)}`
+        const scriptId = `customscript${truncateText(filename.replace('ARKA', '').replace('.js', '').toLowerCase(), 25)}`
+
+        const dispatcherObjectFile = `
+            <${singleDispatcher.scriptType.toLowerCase()} 
+                scriptid="${scriptId}"
+            >
+                <name>${filename}</name>
+                <notifyowner>T</notifyowner>
+                <scriptfile>[${singleDispatcher.path.replace('./FileCabinet', '')}.js]</scriptfile>
+                <description>This is a ${singleDispatcher.scriptType} dispatcher for the ${singleDispatcher.recordType.toLowerCase()} record. It's purpose is to combine the scripts: ${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => singleDispatcherHeaderPath.headerModuleName).join(', ')} onto a single file for performance improvements. Please refer to each individual file to see how they works</description>
+                <scriptdeployments>
+                    <scriptdeployment scriptid="${scriptDeploymentId}">
+                        <isdeployed>T</isdeployed>
+                        <loglevel>DEBUG</loglevel>
+                        <recordtype>${singleDispatcher.recordType.replace(' ', '_').toUpperCase()}</recordtype>
+                        <status>RELEASED</status>
+                    </scriptdeployment>
+                </scriptdeployments>
+            </${singleDispatcher.scriptType.toLowerCase()}>       
+        `
+
+        // Upload as well the dispatcher object file
+        const objectPath = `${baseObjectsPath}/${singleDispatcher.recordType}/${scriptId}.xml`
+        fs.writeFileSync(objectPath, dispatcherObjectFile)
+
+        // Push the dispatcher data into the dispatchersData array
+        dispatchersData.push({
+            scriptPath: `${finalPath.replace('./FileCabinet', '')}`,
+            objectPath: objectPath,
+            recordType: singleDispatcher.recordType,
+            scriptType: singleDispatcher.scriptType,
+            dispatcherFilesContents: dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => singleDispatcherHeaderPath.headerModuleName),
+        })
+    })
+
+    // Create a new deploy.json file that contains the dispatcher files & objects to be deployed
+    fs.writeFileSync(`${currentFolderPath}/deployfile.json`, JSON.stringify(dispatchersData, null, 2))
+
+    // Write stats about the dispatcher files
+    console.log("Summary of the dispatcher files to be uploaded:")
+    for(const [index, singleDispatcher] of dispatchersData.entries()) {
+        console.log(`- ${index + 1}/${dispatchersData.length} dispatcher file of type ${singleDispatcher.scriptType} will be uploaded for the ${singleDispatcher.recordType} record (${singleDispatcher.dispatcherFilesContents.length} file${singleDispatcher.dispatcherFilesContents.length > 1 ? 's' : ''} included)`)
+        if(index < dispatchersData.length - 1) {
+            console.log('////////////////////////////')
+        }
+    }
+} catch (err) {
+    console.error('Something went wrong creating dispatcher files: ', err)
+    process.exit(1)
 }

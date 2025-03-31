@@ -1,14 +1,14 @@
 <deploy>
-    <configuration>
+      <configuration>
         <path>~/AccountConfiguration/*</path>
-    </configuration>
-    <files>
-        <path>~/FileCabinet/*</path>
-    </files>
-    <objects>
-        <path>~/Objects/*</path>
-    </objects>
-    <translationimports>
+      </configuration>
+      <files>
+        <path>~/FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js</path>
+      </files>
+      <objects>
+        <path>~/Objects/Estimate/customscript_sue_est_dispatcher1.xml</path>
+      </objects>
+      <translationimports>
         <path>~/Translations/*</path>
-    </translationimports>
-</deploy>
+      </translationimports>
+    </deploy>

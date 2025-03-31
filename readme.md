@@ -1,0 +1,3 @@
+- openssl req -x509 -newkey rsa:3072 -keyout private-key-production.pem -out public-key-production.pem -days 730 -nodes
+- Always deploy to suyitecloud development integration application on netsuite (go to oauth 2.0 client credentials setup)
+- Expiration date: 2 years
