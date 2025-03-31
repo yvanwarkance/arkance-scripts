@@ -1,13 +1,13 @@
 
             <usereventscript 
-                scriptid="customscript_arka_sue_est_dispatcher1"
+                scriptid="customscript_sue_est_dispatcher1"
             >
                 <name>ARKA_SUE_Est_dispatcher1</name>
                 <notifyowner>T</notifyowner>
                 <scriptfile>[/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js]</scriptfile>
                 <description>This is a UserEventScript dispatcher for the estimate record. It's purpose is to combine the scripts: ARKA_SUE_NBEPersonas onto a single file for performance improvements. Please refer to each individual file to see how they works</description>
                 <scriptdeployments>
-                    <scriptdeployment scriptid="customdeploy_cr_arka_sue_est_dispatc">
+                    <scriptdeployment scriptid="customdeploy_sue_est_dispatcher1">
                         <isdeployed>T</isdeployed>
                         <loglevel>DEBUG</loglevel>
                         <recordtype>ESTIMATE</recordtype>

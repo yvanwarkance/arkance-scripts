@@ -6,7 +6,7 @@
         <path>~/FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js</path>
       </files>
       <objects>
-        <path>~/Objects/Estimate/customscript_arka_sue_est_dispatcher1.xml</path>
+        <path>~/Objects/Estimate/customscript_sue_est_dispatcher1.xml</path>
       </objects>
       <translationimports>
         <path>~/Translations/*</path>

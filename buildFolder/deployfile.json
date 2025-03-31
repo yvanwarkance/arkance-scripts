@@ -1,7 +1,7 @@
 [
   {
     "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js",
-    "objectPath": "./Objects/Estimate/customscript_arka_sue_est_dispatcher1.xml",
+    "objectPath": "./Objects/Estimate/customscript_sue_est_dispatcher1.xml",
     "recordType": "Estimate",
     "scriptType": "UserEventScript",
     "dispatcherFilesContents": [

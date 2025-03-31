@@ -152,8 +152,8 @@ try {
         // Also create the dispatcher object relative to the script type
         const baseObjectsPath = "./Objects"
         const filename = singleDispatcher.path.split('/').pop()
-        const scriptDeploymentId = `customdeploy_cr_${truncateText(filename.replace('.js', '').toLowerCase(), 20)}`
-        const scriptId = `customscript_${truncateText(filename.replace('.js', '').toLowerCase(), 25)}`
+        const scriptDeploymentId = `customdeploy${truncateText(filename.replace('ARKA', '').replace('.js', '').toLowerCase(), 20)}`
+        const scriptId = `customscript${truncateText(filename.replace('ARKA', '').replace('.js', '').toLowerCase(), 25)}`
 
         const dispatcherObjectFile = `
             <${singleDispatcher.scriptType.toLowerCase()} 
