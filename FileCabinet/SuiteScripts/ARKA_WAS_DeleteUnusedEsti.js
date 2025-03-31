@@ -2,174 +2,155 @@
  * @NApiVersion 2.1
  * @NScriptType Workflowactionscript
  */
-define(['N/record', 'N/search', './BBE_LIB_GenericFunctionsSS2.js', 'N/transaction'], function (record, search, bbeLib, transaction) {
-
-    
-    function updateContractLink(contractID, estimateID){
-
-        var isOkay = false;
+define(['N/record', 'N/search', './BBE_LIB_GenericFunctionsSS2.js', 'N/transaction'], function (
+    record,
+    search,
+    bbeLib,
+    transaction
+) {
+    function updateContractLink(contractID, estimateID) {
+        var isOkay = false
 
         var contractRec = record.load({
             type: 'customrecord_contracts',
             id: contractID,
-            isDynamic: false
-        });
+            isDynamic: false,
+        })
 
         contractRec.setValue({
             fieldId: 'custrecord_contract_renewal_tran',
             value: estimateID,
-            ignoreFieldChange: true
-        });
+            ignoreFieldChange: true,
+        })
 
         contractRec.setValue({
             fieldId: 'custrecord_contract_status',
             value: 6,
-            ignoreFieldChange: true
-        });
+            ignoreFieldChange: true,
+        })
 
-        contractRec.save();
+        contractRec.save()
 
-        isOkay = true;
+        isOkay = true
 
-        return isOkay;
+        return isOkay
     }
-    
-    function getOtherEstimate(contractTerm, contractID) {
 
-        var estimateID = -1;
+    function getOtherEstimate(contractTerm, contractID) {
+        var estimateID = -1
 
         var estimateSearchObj = search.create({
-            type: "estimate",
-            filters:
-                [
-                    ["type", "anyof", "Estimate"],
-                    "AND",
-                    ["custbody_swe_from_contract", "anyof", contractID],
-                    "AND",
-                    ["custbody_order_type", "anyof", "2"],
-                    "AND",
-                    ["mainline", "is", "T"],
-                    "AND",
-                    ["custbody_tran_term_in_months", "notequalto", contractTerm]
-                ],
-            columns:
-                [
-                    search.createColumn({name: "internalid", label: "Internal ID"}),
-                    search.createColumn({ name: "tranid", label: "Document Number" }),
-                    search.createColumn({ name: "trandate", label: "Date" }),
-                    search.createColumn({ name: "entity", label: "Name" }),
-                    search.createColumn({ name: "custbody_tran_term_in_months", label: "Contract Term" }),
-                    search.createColumn({ name: "custbody_swe_from_contract", label: "From Contract" })
-                ]
-        });
+            type: 'estimate',
+            filters: [
+                ['type', 'anyof', 'Estimate'],
+                'AND',
+                ['custbody_swe_from_contract', 'anyof', contractID],
+                'AND',
+                ['custbody_order_type', 'anyof', '2'],
+                'AND',
+                ['mainline', 'is', 'T'],
+                'AND',
+                ['custbody_tran_term_in_months', 'notequalto', contractTerm],
+            ],
+            columns: [
+                search.createColumn({ name: 'internalid', label: 'Internal ID' }),
+                search.createColumn({ name: 'tranid', label: 'Document Number' }),
+                search.createColumn({ name: 'trandate', label: 'Date' }),
+                search.createColumn({ name: 'entity', label: 'Name' }),
+                search.createColumn({ name: 'custbody_tran_term_in_months', label: 'Contract Term' }),
+                search.createColumn({ name: 'custbody_swe_from_contract', label: 'From Contract' }),
+            ],
+        })
         estimateSearchObj.run().each(function (result) {
             estimateID = result.getValue({
-                name: 'internalid'
-            });
-        });
+                name: 'internalid',
+            })
+        })
 
-        return estimateID;
+        return estimateID
     }
 
     function onAction(scriptContext) {
-
         try {
+            var contract_term = scriptContext.newRecord.getValue('custbody_tran_term_in_months')
+            var contractID = scriptContext.newRecord.getValue('custbody_swe_from_contract')
+            var createdFrom = scriptContext.newRecord.getValue('createdfrom')
+            var estimateID = scriptContext.newRecord.id
 
-            var contract_term = scriptContext.newRecord.getValue('custbody_tran_term_in_months');
-            var contractID = scriptContext.newRecord.getValue('custbody_swe_from_contract');
-            var createdFrom = scriptContext.newRecord.getValue('createdfrom');
-            var estimateID = scriptContext.newRecord.id;
-
-            if(!bbeLib.isNullOrEmpty(createdFrom)){
-                estimateID = createdFrom;
+            if (!bbeLib.isNullOrEmpty(createdFrom)) {
+                estimateID = createdFrom
             }
 
-            var estimateToBeVoided = -1;
-            
-            if (contract_term == 12 && (!bbeLib.isNullOrEmpty(contractID))) {
-                
-                estimateToBeVoided = getOtherEstimate(contract_term, contractID);
+            var estimateToBeVoided = -1
+
+            if (contract_term == 12 && !bbeLib.isNullOrEmpty(contractID)) {
+                estimateToBeVoided = getOtherEstimate(contract_term, contractID)
 
                 log.debug({
                     title: 'Data',
-                    details: 'Estimate ' + estimateToBeVoided + ' , Contract ID: ' + contractID
-                });
+                    details: 'Estimate ' + estimateToBeVoided + ' , Contract ID: ' + contractID,
+                })
 
                 transaction.void({
                     type: transaction.Type.ESTIMATE,
-                    id: estimateToBeVoided
-                });
+                    id: estimateToBeVoided,
+                })
 
                 log.debug({
                     title: 'Contract Info',
-                    details: 'Estimate 3Yr('+ estimateToBeVoided +') voided and No contract update needed'
-                });
-
+                    details: 'Estimate 3Yr(' + estimateToBeVoided + ') voided and No contract update needed',
+                })
             }
 
-            if (contract_term == 36 && (!bbeLib.isNullOrEmpty(contractID))) {
+            if (contract_term == 36 && !bbeLib.isNullOrEmpty(contractID)) {
+                var isContractUpdate = updateContractLink(contractID, estimateID)
 
-                var isContractUpdate = updateContractLink(contractID, estimateID);
-                
-                if(isContractUpdate){
-
-                    estimateToBeVoided = getOtherEstimate(contract_term, contractID);
+                if (isContractUpdate) {
+                    estimateToBeVoided = getOtherEstimate(contract_term, contractID)
 
                     log.debug({
                         title: 'Data',
-                        details: 'Estimate ' + estimateToBeVoided + ' , Contract ID: ' + contractID
-                    });
+                        details: 'Estimate ' + estimateToBeVoided + ' , Contract ID: ' + contractID,
+                    })
 
                     transaction.void({
                         type: transaction.Type.ESTIMATE,
-                        id: estimateToBeVoided
-                    });
+                        id: estimateToBeVoided,
+                    })
 
                     log.debug({
                         title: 'Contract Info',
-                        details: 'Estimate 1Yr voided and contract updated'
-                    });
-
-                }else{
-
+                        details: 'Estimate 1Yr voided and contract updated',
+                    })
+                } else {
                     log.debug({
                         title: 'Contract Info',
-                        details: 'Contract was not updated'
-                    });
-
+                        details: 'Contract was not updated',
+                    })
                 }
-
             }
 
-            if(estimateToBeVoided != -1){
-
+            if (estimateToBeVoided != -1) {
                 var estimateToBeVoidedRec = record.load({
                     type: record.Type.ESTIMATE,
-                    id: estimateToBeVoided
-                });
+                    id: estimateToBeVoided,
+                })
 
                 estimateToBeVoidedRec.setValue({
                     fieldId: 'entitystatus',
-                    value: 14
-                });
+                    value: 14,
+                })
 
-                estimateToBeVoidedRec.save();
-
+                estimateToBeVoidedRec.save()
             }
 
-            return 1;
+            return 1
+        } catch (e) {
+            log.debug({ title: 'Fail to Delete Estimate: ', details: e })
+            return 0
         }
-        catch (e) {
-
-            log.debug({ title: 'Fail to Delete Estimate: ', details: e });
-            return 0;
-
-        }
-
-
     }
     return {
-        onAction: onAction
-    };
-
-});
+        onAction: onAction,
+    }
+})

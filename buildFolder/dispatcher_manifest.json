@@ -3,7 +3,7 @@
     "UserEventScript": {
       "dispatcher1": [
         {
-          "name": "ARKA_SUE_NBEPersonas",
+          "name": "ARKA_SUE_NBEPersonas.js",
           "units": 100
         }
       ]

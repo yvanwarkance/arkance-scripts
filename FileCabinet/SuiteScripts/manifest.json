@@ -1,6 +1,6 @@
 [
     {
-        "name": "./ARKA_SUE_NBEPersonas",
+        "name": "./ARKA_SUE_NBEPersonas.js",
         "units": 100,
         "type": "UserEventScript",
         "recordType": "Estimate"

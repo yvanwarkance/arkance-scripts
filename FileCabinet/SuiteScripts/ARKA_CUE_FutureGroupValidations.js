@@ -10,20 +10,12 @@ define([
     'N/search',
     'N/ui/dialog',
     'N/currentRecord',
-    'N/query'
-], function (
-    bbeLib,
-    validationLib,
-    record,
-    search,
-    dialog,
-    currentRecord,
-    query
-) {
-    const APPROVED_STATUS_ID = 2;
+    'N/query',
+], function (bbeLib, validationLib, record, search, dialog, currentRecord, query) {
+    const APPROVED_STATUS_ID = 2
 
     function validateLine(scriptContext) {
-        var isEndOfLifeExpired = false;
+        var isEndOfLifeExpired = false
 
         if (
             scriptContext.currentRecord.type == record.Type.SALES_ORDER ||
@@ -32,9 +24,9 @@ define([
             scriptContext.currentRecord.type == record.Type.OPPORTUNITY
         ) {
             if (scriptContext.sublistId == 'item') {
-                isEndOfLifeExpired = validateEndOfLife(scriptContext);
+                isEndOfLifeExpired = validateEndOfLife(scriptContext)
                 if (!isEndOfLifeExpired) {
-                    return false;
+                    return false
                 }
             }
         }
@@ -46,7 +38,7 @@ define([
         //     return validateFGConstraints(scriptContext);
         // }
 
-        return true;
+        return true
     }
 
     /**
@@ -58,22 +50,22 @@ define([
      * @governance 4 Units
      */
     function validateFGConstraints(scriptContext) {
-        var lineIsValide = true;
-        var currentSublistId = scriptContext.sublistId;
-        var transactionRecord = scriptContext.currentRecord;
+        var lineIsValide = true
+        var currentSublistId = scriptContext.sublistId
+        var transactionRecord = scriptContext.currentRecord
 
         if (scriptContext.sublistId == 'item') {
             var itemId = transactionRecord.getCurrentSublistValue({
                 sublistId: currentSublistId,
-                fieldId: 'item'
-            });
+                fieldId: 'item',
+            })
 
             if (!itemId) {
-                return true;
+                return true
             }
 
             if (bbeLib.isNullOrEmpty(itemId)) {
-                return false;
+                return false
             }
             // log.error('isFutureGroupTransaction', validationLib.isFutureGroupTransaction(transactionRecord))
             // log.error('isAutodeskItem', validationLib.isAutodeskItem(itemId))
@@ -83,46 +75,34 @@ define([
             ) {
                 var orderType = transactionRecord.getCurrentSublistValue({
                     sublistId: currentSublistId,
-                    fieldId: 'custcol_arka_ordertypeslinefield'
-                });
+                    fieldId: 'custcol_arka_ordertypeslinefield',
+                })
 
                 // log.error('orderType', orderType)
 
                 if (bbeLib.isNullOrEmpty(orderType)) {
-                    alert(
-                        'It is required to select an Order Type on the item line level.'
-                    );
-                    lineIsValide = false;
+                    alert('It is required to select an Order Type on the item line level.')
+                    lineIsValide = false
                 } else {
-                    var constraints = validationLib.SO_FIELDS_CONSTRAINTS.line;
-                    var errorMessage = '';
-                    for (
-                        var field = 0;
-                        field < validationLib.LINE_FIELDS.length;
-                        field++
-                    ) {
-                        var fieldValue =
-                            transactionRecord.getCurrentSublistValue({
-                                sublistId: currentSublistId,
-                                fieldId: validationLib.LINE_FIELDS[field]
-                            });
-                        var fieldConstraints =
-                            constraints[validationLib.LINE_FIELDS[field]];
-                        errorMessage += validateFieldFGConstraints(
-                            fieldValue,
-                            fieldConstraints,
-                            orderType
-                        );
+                    var constraints = validationLib.SO_FIELDS_CONSTRAINTS.line
+                    var errorMessage = ''
+                    for (var field = 0; field < validationLib.LINE_FIELDS.length; field++) {
+                        var fieldValue = transactionRecord.getCurrentSublistValue({
+                            sublistId: currentSublistId,
+                            fieldId: validationLib.LINE_FIELDS[field],
+                        })
+                        var fieldConstraints = constraints[validationLib.LINE_FIELDS[field]]
+                        errorMessage += validateFieldFGConstraints(fieldValue, fieldConstraints, orderType)
                     }
                     if (!bbeLib.isNullOrEmpty(errorMessage)) {
-                        lineIsValide = false;
-                        alert(errorMessage);
+                        lineIsValide = false
+                        alert(errorMessage)
                     }
                 }
             }
         }
 
-        return lineIsValide;
+        return lineIsValide
     }
 
     /**
@@ -133,57 +113,51 @@ define([
      * @governance  Units
      */
     function validateEndOfLife(scriptContext) {
-        var isSuccessfull = false;
-        var currentRecord = scriptContext.currentRecord;
+        var isSuccessfull = false
+        var currentRecord = scriptContext.currentRecord
 
         var tranDate = currentRecord.getValue({
-            fieldId: 'trandate'
-        });
+            fieldId: 'trandate',
+        })
 
         var currentItem = currentRecord.getCurrentSublistValue({
             sublistId: 'item',
-            fieldId: 'item'
-        });
+            fieldId: 'item',
+        })
 
         var name = currentRecord.getCurrentSublistValue({
             sublistId: 'item',
-            fieldId: 'item_display'
-        });
+            fieldId: 'item_display',
+        })
 
         if (!currentItem) {
-            return true;
+            return true
         }
 
         var queryEndOfLife =
-            " select to_char(custitem_end_of_life_date, 'YYYY-MM-DD') from item    " +
-            '   where id = ' +
-            currentItem;
+            " select to_char(custitem_end_of_life_date, 'YYYY-MM-DD') from item    " + '   where id = ' + currentItem
 
         var resultSet = query.runSuiteQL({
             //10 units
-            query: queryEndOfLife
-        });
+            query: queryEndOfLife,
+        })
 
-        var queryResult = resultSet.results;
+        var queryResult = resultSet.results
 
         if (!bbeLib.isNullOrEmpty(queryResult)) {
             //Not found on item
 
-            var endofLifeDate = queryResult[0].values[0];
+            var endofLifeDate = queryResult[0].values[0]
 
             if (!bbeLib.isNullOrEmpty(endofLifeDate)) {
                 //No value on field
 
-                var dateObj = endofLifeDate.split('-');
-                var endDateFormatted = new Date(
-                    dateObj[0],
-                    dateObj[1] - 1,
-                    dateObj[2]
-                );
+                var dateObj = endofLifeDate.split('-')
+                var endDateFormatted = new Date(dateObj[0], dateObj[1] - 1, dateObj[2])
 
-                var dateDiff = endDateFormatted.getTime() - tranDate.getTime();
+                var dateDiff = endDateFormatted.getTime() - tranDate.getTime()
 
-                dateDiff = dateDiff / (1000 * 3600 * 24);
+                dateDiff = dateDiff / (1000 * 3600 * 24)
 
                 //verify end of life date
                 if (!bbeLib.isNullOrEmpty(tranDate) && dateDiff < 0) {
@@ -192,19 +166,19 @@ define([
                             name +
                             ' is less than the transaction date. End of Life of this item is : ' +
                             endofLifeDate
-                    );
-                    return false;
+                    )
+                    return false
                 } else {
-                    isSuccessfull = true;
+                    isSuccessfull = true
                 }
             } else {
-                isSuccessfull = true;
+                isSuccessfull = true
             }
         } else {
-            isSuccessfull = true;
+            isSuccessfull = true
         }
 
-        return isSuccessfull;
+        return isSuccessfull
     }
 
     /**
@@ -213,29 +187,25 @@ define([
      * @returns true
      */
     function updateRate(scriptContext) {
-        if (
-            validationLib.isFutureGroupTransaction(scriptContext.currentRecord)
-        ) {
-            var currentSublistId = scriptContext.sublistId;
+        if (validationLib.isFutureGroupTransaction(scriptContext.currentRecord)) {
+            var currentSublistId = scriptContext.sublistId
             if (currentSublistId == 'item') {
-                var roundedRate =
-                    scriptContext.currentRecord.getCurrentSublistValue({
-                        sublistId: 'item',
-                        fieldId: 'custcol_swe_contract_item_term_months'
-                    });
-                var listRate =
-                    scriptContext.currentRecord.getCurrentSublistValue({
-                        sublistId: 'item',
-                        fieldId: 'custcol_list_rate'
-                    });
+                var roundedRate = scriptContext.currentRecord.getCurrentSublistValue({
+                    sublistId: 'item',
+                    fieldId: 'custcol_swe_contract_item_term_months',
+                })
+                var listRate = scriptContext.currentRecord.getCurrentSublistValue({
+                    sublistId: 'item',
+                    fieldId: 'custcol_list_rate',
+                })
                 scriptContext.currentRecord.setCurrentSublistValue({
                     sublistId: 'item',
                     fieldId: 'rate',
-                    value: roundedRate * listRate
-                });
+                    value: roundedRate * listRate,
+                })
             }
         }
-        return true;
+        return true
     }
 
     /**
@@ -247,22 +217,15 @@ define([
      * @return {string} The error message
      * @governance 0 Units
      */
-    function validateFieldFGConstraints(
-        fieldValue,
-        fieldConstraints,
-        orderType
-    ) {
-        var errorMessage = '';
+    function validateFieldFGConstraints(fieldValue, fieldConstraints, orderType) {
+        var errorMessage = ''
         if (
             !bbeLib.isNullOrEmpty(fieldConstraints.mandatoryIn) &&
             fieldConstraints.mandatoryIn.indexOf(orderType) > -1 &&
             orderType != validationLib.ORDER_TYPE.MAN
         ) {
             if (bbeLib.isNullOrEmpty(fieldValue)) {
-                errorMessage =
-                    '\t- The field "' +
-                    fieldConstraints.label +
-                    '" is mandatory.\n';
+                errorMessage = '\t- The field "' + fieldConstraints.label + '" is mandatory.\n'
             } else if (
                 !bbeLib.isNullOrEmpty(fieldConstraints.maxLength) &&
                 fieldConstraints.maxLength < fieldValue.length
@@ -272,10 +235,10 @@ define([
                     fieldConstraints.label +
                     '" is ' +
                     fieldConstraints.maxLength +
-                    ' characters.\n';
+                    ' characters.\n'
             }
         }
-        return errorMessage;
+        return errorMessage
     }
 
     /**
@@ -289,23 +252,23 @@ define([
      * @returns {boolean} Return true if record is valid
      */
     function savePO(scriptContext) {
-        var newRecord = scriptContext.currentRecord;
-      try {
-        if (
-            newRecord.type == record.Type.PURCHASE_ORDER &&
-            validationLib.isFutureGroupTransaction(newRecord) &&
-            newRecord.getValue('approvalstatus') == APPROVED_STATUS_ID
-        ) {
-            // 2 Units
-            return confirm(
-                'You are about to save a Purchase Order that was already approved. Are you sure you want to modify it?'
-            );
+        var newRecord = scriptContext.currentRecord
+        try {
+            if (
+                newRecord.type == record.Type.PURCHASE_ORDER &&
+                validationLib.isFutureGroupTransaction(newRecord) &&
+                newRecord.getValue('approvalstatus') == APPROVED_STATUS_ID
+            ) {
+                // 2 Units
+                return confirm(
+                    'You are about to save a Purchase Order that was already approved. Are you sure you want to modify it?'
+                )
+            }
+            return true
+        } catch (e) {
+            log.debug(e.message)
+            log.error(e.message)
         }
-        return true;
-      } catch (e) {
-        log.debug(e.message)
-        log.error(e.message)
-      }
     }
 
     /**
@@ -322,63 +285,57 @@ define([
      * @param {number} scriptContext.columnNum - Line number. Will be undefined if not a matrix field
      */
     function fieldChanged(scriptContext) {
-        var companyId;
+        var companyId
         switch (scriptContext.currentRecord.type) {
             case record.Type.ESTIMATE:
                 if (
                     scriptContext.fieldId == 'custbody_end_user' &&
-                    !bbeLib.isNullOrEmpty(
-                        scriptContext.currentRecord.getValue(
-                            'custbody_end_user'
-                        )
-                    ) 
+                    !bbeLib.isNullOrEmpty(scriptContext.currentRecord.getValue('custbody_end_user'))
                     //&& validationLib.isFutureGroupTransaction( scriptContext.currentRecord ) 20240907
                 ) {
-                    var estimateRecord = currentRecord.get();
+                    var estimateRecord = currentRecord.get()
                     //validateEndUserForEstimate(estimateRecord); // 5 Units
                     estimateRecord.setValue({
                         fieldId: 'custbody_arka_sourcingrecord',
                         value: estimateRecord.getValue('custbody_end_user'),
-                        ignoreFieldChange: true
-                    });
+                        ignoreFieldChange: true,
+                    })
                 }
-                break;
+                break
             case record.Type.SALES_ORDER:
                 if (scriptContext.fieldId == 'custbody_end_user') {
-                    var salesOrderRecord = scriptContext.currentRecord;
+                    var salesOrderRecord = scriptContext.currentRecord
                     salesOrderRecord.setValue({
                         fieldId: 'custbody_arka_sourcingrecord',
                         value: salesOrderRecord.getValue('custbody_end_user'),
-                        ignoreFieldChange: true
-                    });
+                        ignoreFieldChange: true,
+                    })
                 }
-                break;
+                break
             case record.Type.PURCHASE_ORDER:
                 if (scriptContext.fieldId == 'custbody_po_end_user') {
-                    var purchaseOrderRecord = scriptContext.currentRecord;
+                    var purchaseOrderRecord = scriptContext.currentRecord
                     companyId = search.lookupFields({
                         type: record.Type.CUSTOMER,
-                        id: purchaseOrderRecord.getValue(
-                            'custbody_po_end_user'
-                        ),
-                        columns: ['custentity_cb_companyid']
-                    });
+                        id: purchaseOrderRecord.getValue('custbody_po_end_user'),
+                        columns: ['custentity_cb_companyid'],
+                    })
 
                     purchaseOrderRecord.setValue({
                         fieldId: 'custbody_arka_sourcingrecord',
                         value: companyId.custentity_cb_companyid,
-                        ignoreFieldChange: true
-                    });
+                        ignoreFieldChange: true,
+                    })
                 }
-                break;
+                break
             case record.Type.CONTACT:
                 if (scriptContext.fieldId == 'company') {
                     scriptContext.currentRecord.setValue({
                         fieldId: 'custentity_company_id',
-                        value: scriptContext.currentRecord.getValue('company')
-                    });
+                        value: scriptContext.currentRecord.getValue('company'),
+                    })
                 }
-                break;
+                break
         }
     }
 
@@ -390,37 +347,35 @@ define([
      * @param {record} estimateRecord
      */
     function validateEndUserForEstimate(estimateRecord) {
-        var fieldIsValide = true;
+        var fieldIsValide = true
         var endUserRecord = record.load({
             type: record.Type.CUSTOMER,
             id: estimateRecord.getValue('custbody_end_user'),
-            isDynamic: true
-        }); // 5 units
+            isDynamic: true,
+        }) // 5 units
         if (
             endUserRecord.getValue('creditholdoverride') == 'ON' ||
             (endUserRecord.getValue('creditholdoverride') == 'AUTO' &&
-                endUserRecord.getValue('creditlimit') <
-                    endUserRecord.getValue('balance'))
+                endUserRecord.getValue('creditlimit') < endUserRecord.getValue('balance'))
         ) {
-            fieldIsValide = false;
+            fieldIsValide = false
         }
         if (!fieldIsValide) {
             estimateRecord.setValue({
                 fieldId: 'custbody_end_user',
                 value: '',
-                ignoreFieldChange: true
-            });
+                ignoreFieldChange: true,
+            })
             dialog.alert({
                 title: 'Invalide value',
-                message:
-                    "The End User you have selected can't be used, please check the End User's credit limit."
-            });
+                message: "The End User you have selected can't be used, please check the End User's credit limit.",
+            })
         }
     }
 
     return {
         validateLine: validateLine,
         //saveRecord: savePO,
-        fieldChanged: fieldChanged
-    };
-});
+        fieldChanged: fieldChanged,
+    }
+})

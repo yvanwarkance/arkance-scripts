@@ -2,6 +2,7 @@
     {
         "type": "ClientScript",
         "folderName": "Client Scripts",
+        "fileNomenclature": "ARKA_CUE",
         "entrypoints": [
             "fieldChanged",
             "lineInit",
@@ -20,18 +21,13 @@
     {
         "type": "UserEventScript",
         "folderName": "User Event Scripts",
-        "entrypoints": [
-            "afterSubmit",
-            "beforeSubmit",
-            "beforeLoad",
-            "context.UserEventType"
-        ]
+        "fileNomenclature": "ARKA_SUE",
+        "entrypoints": ["afterSubmit", "beforeSubmit", "beforeLoad", "context.UserEventType"]
     },
     {
         "type": "WorkflowActionScript",
         "folderName": "Workflow Action Scripts",
-        "entrypoints": [
-            "onAction"
-        ]
+        "fileNomenclature": "ARKA_WAS",
+        "entrypoints": ["onAction"]
     }
 ]
