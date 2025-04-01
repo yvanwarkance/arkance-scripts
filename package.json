@@ -15,7 +15,7 @@
         "setup-prod": "suitecloud account:setup:ci --account 5565205 --authid proddeployment --certificateid moIO4Otu9k0G7o-lrKdZqgrszsmOCPctPGCE4Jhk0JY --privatekeypath ./passkeys/prod/private-key-production.pem",
         "test-deploy": "suitecloud project:adddependencies && suitecloud project:validate --server && suitecloud project:deploy --dryrun",
         "deploy-to-ci": "suitecloud project:adddependencies && suitecloud project:validate --server && suitecloud project:deploy",
-        "deploy-dev": "npm run build-local && npm run apply-format && npm run generate-deploy-file && npm run deploy-to-ci",
+        "deploy-dev": "npm run build-local && npm run generate-deploy-file && npm run apply-format && npm run deploy-to-ci",
         "prepare": "husky",
         "test": "echo \"No tests specified\" && exit 0"
     },

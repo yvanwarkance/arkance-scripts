@@ -19,6 +19,9 @@ define(['N/ui/serverWidget', 'N/ui/message', 'N/record', 'N/search', 'N/format']
     search,
     format
 ) {
+    /**
+     * @governance 10 Units
+     */
     function beforeLoad(context) {
         log.debug('Function', 'beforeLoad')
         if (context.type === context.UserEventType.VIEW || context.type === context.UserEventType.EDIT) {

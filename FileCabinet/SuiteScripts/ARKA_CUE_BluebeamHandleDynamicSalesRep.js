@@ -80,6 +80,16 @@ define(['N/log', 'N/ui/message', 'N/runtime'] /**
         }
     }
 
+    const pageInit = async (scriptContext) => {
+        log.debug({
+            title: 'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+            details: {
+                title: 'Running the pageInit entrypoint from the ARKA_CUE_BluebeamHandleDynamicSalesRep script',
+                entrypoint: 'pageInit',
+            },
+        })
+    }
+
     /**
      * Function to be executed when field is slaved.
      *
@@ -244,5 +254,6 @@ define(['N/log', 'N/ui/message', 'N/runtime'] /**
 
     return {
         postSourcing: postSourcing,
+        pageInit: pageInit,
     }
 })

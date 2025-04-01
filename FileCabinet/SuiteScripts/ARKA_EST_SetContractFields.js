@@ -22,15 +22,9 @@ define(['N/query', 'SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/record', 'N
     msg
 ) {
     /**
-     *
-     * @param {Object} scriptContext
-     * @governance 10 units
-     */
-
-    /**
      * This function search for custbody_contract_manager_contact
      *
-     * @governance 0 unit
+     * @governance 20 unit
      */
     function fieldChangedSetOptions(context) {
         var currentRec = context.currentRecord

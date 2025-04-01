@@ -10,7 +10,7 @@ define(['N/log'], function (log) {
      * @param {Object} scriptContext
      * @param {Record} scriptContext.currentRecord - Current form record
      * @param {string} scriptContext.mode - The mode in which the record is being accessed (create, copy, or edit)
-     *
+     * @governance 0 Units
      * @since 2015.2
      */
     function pageInit(scriptContext) {

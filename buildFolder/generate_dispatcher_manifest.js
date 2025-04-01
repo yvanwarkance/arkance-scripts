@@ -24,6 +24,7 @@ const getAllManifests = (dir) => {
 }
 
 try {
+    console.log('1/3 - Generating the dispatcher manifest...')
     const baseScriptsPath = 'FileCabinet/SuiteScripts/'
     const baseObjectsPath = 'Objects/'
 
@@ -119,6 +120,8 @@ try {
 
     // Write the result to a file or process further as needed
     fs.writeFileSync('./buildFolder/dispatcher_manifest.json', JSON.stringify(groupedWithDispatchers, null, 2))
+
+    console.log('The dispatcher manifest has been generated successfully!\n')
 } catch (error) {
     console.error('Something went wrong creating deploy files: ', error)
     process.exit(1)

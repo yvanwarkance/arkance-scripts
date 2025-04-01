@@ -1,7 +1,145 @@
 [
     {
+        "name": "./ARKA_CUE_BluebeamHandleDynamicSalesRep.js",
+        "units": 10,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_CUE_fillContactOptions.js",
+        "units": 20,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_CUE_NBEPersonas.js",
+        "units": 20,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_CUE_RemoveCustomerStatuses.js",
+        "units": 10,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_CUE_SetExpectedCloseDateField.js",
+        "units": 10,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_CUE_TenderCheckboxControl.js",
+        "units": 20,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_CUE_TransactionDepValidation.js",
+        "units": 41,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_EST_SetContractFields.js",
+        "units": 30,
+        "type": "ClientScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_AddSyncQuoteButton.js",
+        "units": 41,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_AutodeskNxmFieldValidation.js",
+        "units": 31,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_BluebeamHandleDynamicSalesRep.js",
+        "units": 30,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_CalculateExtendedCostAndPoRate.js",
+        "units": 40,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_CheckOutsideItemGroup.js",
+        "units": 20,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_CreateContactManagerField.js",
+        "units": 10,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_DatechFieldValidation.js",
+        "units": 42,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_DisplayWarningEstMessage.js",
+        "units": 20,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_DuplicateEstimate.js",
+        "units": 52,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_LimitTransactionStatus.js",
+        "units": 55,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
         "name": "./ARKA_SUE_NBEPersonas.js",
-        "units": 100,
+        "units": 10,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_RenewalProcessEshopNetSuite.js",
+        "units": 36,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_SetContractNumber.js",
+        "units": 50,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js",
+        "units": 40,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_TransactionDepValidation.js",
+        "units": 30,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_WarningOnTransaction.js",
+        "units": 20,
         "type": "UserEventScript",
         "recordType": "Estimate"
     }

@@ -59,6 +59,12 @@ define([
     ]
     const RESETBUTTON_STATUS = [QUOTE_DETAIL_STATUS['FAILED'], QUOTE_DETAIL_STATUS['CANCELLED']]
 
+    /**
+     * Function to be executed when the form is loaded.
+     *
+     * @param {Object} scriptContext
+     * @governance 41 Units
+     */
     function beforeLoad(scriptContext) {
         var rec = scriptContext.newRecord
         var recId = scriptContext.newRecord.id

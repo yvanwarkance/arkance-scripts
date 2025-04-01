@@ -19,6 +19,9 @@ define(['N/query', 'N/ui/message', 'N/search', 'N/runtime'], function (query, ms
     let DEPARTMENT_SEG_TABLE_FIELD //MAP_department_custrecord_dept_area_mapping
     let SEGMENT_LABEL
 
+    /**
+     * @governance 0 Units
+     */
     function pageInit(context) {
         let script = runtime.getCurrentScript()
 
@@ -313,7 +316,7 @@ define(['N/query', 'N/ui/message', 'N/search', 'N/runtime'], function (query, ms
      * Automatically fill in department and product area if sales order and ite are both filled on journal lines
      *
      * @param {*} context
-     * @governance
+     * @governance 1 Unit
      */
     function validateLine(context) {
         let currentRec = context.currentRecord
