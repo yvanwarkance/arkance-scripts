@@ -3,13 +3,14 @@
         <path>~/AccountConfiguration/*</path>
     </configuration>
     <files>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_FutureGroupValidations.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_CUE_BluebeamHandleDynamicSalesRep.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_CUE_fillContactOptions.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_CUE_NBEPersonas.js</path>
-        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js</path>
-        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_CUE_TenderCheckboxControl.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_CUE_TransactionDepValidation.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_EST_SetContractFields.js</path>
         <path>~/FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1.js</path>
         <path>~/FileCabinet/SuiteScripts/ARKA_SUE_AddSyncQuoteButton.js</path>

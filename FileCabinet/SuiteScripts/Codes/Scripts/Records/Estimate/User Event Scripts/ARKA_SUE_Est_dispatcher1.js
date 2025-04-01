@@ -68,6 +68,7 @@ define([
                 ],
             },
         })
+
         if (typeof ARKA_SUE_AddSyncQuoteButton.beforeLoad === 'function') {
             ARKA_SUE_AddSyncQuoteButton.beforeLoad(scriptContext)
         }
@@ -143,6 +144,7 @@ define([
                 ],
             },
         })
+
         if (typeof ARKA_SUE_AddSyncQuoteButton.beforeSubmit === 'function') {
             ARKA_SUE_AddSyncQuoteButton.beforeSubmit(scriptContext)
         }
@@ -218,6 +220,7 @@ define([
                 ],
             },
         })
+
         if (typeof ARKA_SUE_AddSyncQuoteButton.afterSubmit === 'function') {
             ARKA_SUE_AddSyncQuoteButton.afterSubmit(scriptContext)
         }

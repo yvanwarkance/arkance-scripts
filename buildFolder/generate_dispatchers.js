@@ -141,14 +141,17 @@ try {
                                 scriptsLoaded: [${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => `"${singleDispatcherHeaderPath.headerModuleName}"`).join(', ')}],
                                 },
                         })
+                        ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `let result = true;` : ''}
                         ${dispatcherHeaderPaths
                             .map(
                                 (singleDispatcherHeaderPath) =>
-                                    `if (typeof ${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction} === 'function') {
-                                        ${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction}(scriptContext);
+                                    `
+                                    if (typeof ${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction} === 'function') {
+                                        ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `result = result && ` : ''}${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction}(scriptContext);
                                     }`
                             )
                             .join('')}
+                        ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `return result;` : ''}
                     };`
                     )
                     .join('\n')}

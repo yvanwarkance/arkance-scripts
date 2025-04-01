@@ -5,23 +5,25 @@
         "recordType": "Estimate",
         "scriptType": "ClientScript",
         "dispatcherFilesContents": [
+            "ARKA_CUE_FutureGroupValidations",
             "ARKA_CUE_BluebeamHandleDynamicSalesRep",
             "ARKA_CUE_fillContactOptions",
             "ARKA_CUE_NBEPersonas",
-            "ARKA_CUE_RemoveCustomerStatuses",
-            "ARKA_CUE_SetExpectedCloseDateField",
             "ARKA_CUE_TenderCheckboxControl",
             "ARKA_CUE_TransactionDepValidation",
+            "ARKA_CUE_RemoveCustomerStatuses",
+            "ARKA_CUE_SetExpectedCloseDateField",
             "ARKA_EST_SetContractFields"
         ],
         "dispatcherFilesContentsPath": [
+            "./SuiteScripts/ARKA_CUE_FutureGroupValidations.js",
             "./SuiteScripts/ARKA_CUE_BluebeamHandleDynamicSalesRep.js",
             "./SuiteScripts/ARKA_CUE_fillContactOptions.js",
             "./SuiteScripts/ARKA_CUE_NBEPersonas.js",
-            "./SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js",
-            "./SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js",
             "./SuiteScripts/ARKA_CUE_TenderCheckboxControl.js",
             "./SuiteScripts/ARKA_CUE_TransactionDepValidation.js",
+            "./SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js",
+            "./SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js",
             "./SuiteScripts/ARKA_EST_SetContractFields.js"
         ]
     },

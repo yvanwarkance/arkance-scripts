@@ -3,6 +3,10 @@
     "ClientScript": {
       "dispatcher1": [
         {
+          "name": "ARKA_CUE_FutureGroupValidations.js",
+          "units": 46
+        },
+        {
           "name": "ARKA_CUE_BluebeamHandleDynamicSalesRep.js",
           "units": 10
         },
@@ -15,20 +19,20 @@
           "units": 20
         },
         {
-          "name": "ARKA_CUE_RemoveCustomerStatuses.js",
-          "units": 10
-        },
-        {
-          "name": "ARKA_CUE_SetExpectedCloseDateField.js",
-          "units": 10
-        },
-        {
           "name": "ARKA_CUE_TenderCheckboxControl.js",
           "units": 20
         },
         {
           "name": "ARKA_CUE_TransactionDepValidation.js",
           "units": 41
+        },
+        {
+          "name": "ARKA_CUE_RemoveCustomerStatuses.js",
+          "units": 10
+        },
+        {
+          "name": "ARKA_CUE_SetExpectedCloseDateField.js",
+          "units": 10
         },
         {
           "name": "ARKA_EST_SetContractFields.js",
