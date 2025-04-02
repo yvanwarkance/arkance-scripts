@@ -14,6 +14,12 @@ define([
 ], function (bbeLib, validationLib, record, search, dialog, currentRecord, query) {
     const APPROVED_STATUS_ID = 2
 
+    /**
+     * Validate the line of the record
+     * @param {Object} scriptContext
+     * @returns {boolean} Return true if the line is valid
+     * @governance 10 Units
+     */
     function validateLine(scriptContext) {
         var isEndOfLifeExpired = false
 
@@ -31,12 +37,12 @@ define([
             }
         }
 
-        // if (
-        //     scriptContext.currentRecord.type == record.Type.SALES_ORDER ||
-        //     scriptContext.currentRecord.type == record.Type.ESTIMATE
-        // ) {
-        //     return validateFGConstraints(scriptContext);
-        // }
+        if (
+            scriptContext.currentRecord.type == record.Type.SALES_ORDER ||
+            scriptContext.currentRecord.type == record.Type.ESTIMATE
+        ) {
+            return validateFGConstraints(scriptContext)
+        }
 
         return true
     }
@@ -110,7 +116,7 @@ define([
      *
      * @param {Object} scriptContext
      * @returns {boolean} Return true if there is no missing fields
-     * @governance  Units
+     * @governance 10 Units
      */
     function validateEndOfLife(scriptContext) {
         var isSuccessfull = false
@@ -185,6 +191,7 @@ define([
      * Update the line rate to round it based on rounded term
      * @param {*} scriptContext
      * @returns true
+     * @governance 0 Units
      */
     function updateRate(scriptContext) {
         if (validationLib.isFutureGroupTransaction(scriptContext.currentRecord)) {
@@ -218,6 +225,13 @@ define([
      * @governance 0 Units
      */
     function validateFieldFGConstraints(fieldValue, fieldConstraints, orderType) {
+        log.debug({
+            title: 'ARKA_CUE_FutureGroupValidations',
+            details: {
+                title: 'loading validateFieldFGConstraints from ARKA_CUE_FutureGroupValidations',
+                entryPoint: 'validateFieldFGConstraints',
+            },
+        })
         var errorMessage = ''
         if (
             !bbeLib.isNullOrEmpty(fieldConstraints.mandatoryIn) &&

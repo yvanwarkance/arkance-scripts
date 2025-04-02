@@ -125,6 +125,13 @@ define(['N/log', 'N/record', 'N/ui/serverWidget', 'N/search'] /**
      * @governance 20 units
      */
     const afterSubmit = async (scriptContext) => {
+        log.debug({
+            title: 'ARKA_SUE_SetExpectedCloseDateFieldOnEstimate',
+            details: {
+                title: 'ARKA_SUE_SetExpectedCloseDateFieldOnEstimate afterSubmit',
+            },
+        })
+
         try {
             const { newRecord } = scriptContext
             const { type } = newRecord

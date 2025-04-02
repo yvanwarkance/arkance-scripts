@@ -5,6 +5,12 @@
  * @NModuleScope SameAccount
  */
 define(['N/query', 'N/ui/message', 'N/record', 'N/ui/serverWidget'], function (query, message) {
+    /**
+     * Function to be executed when the form is loaded.
+     *
+     * @param {Object} scriptContext
+     * @governance 10 Unit
+     */
     function beforeLoad(scriptContext) {
         var rec = scriptContext.newRecord
         var recId = scriptContext.newRecord.id

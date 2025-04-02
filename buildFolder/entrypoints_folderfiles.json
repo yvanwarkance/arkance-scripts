@@ -22,7 +22,7 @@
         "type": "UserEventScript",
         "folderName": "User Event Scripts",
         "fileNomenclature": "ARKA_SUE",
-        "entrypoints": ["afterSubmit", "beforeSubmit", "beforeLoad", "context.UserEventType"]
+        "entrypoints": ["afterSubmit", "beforeSubmit", "beforeLoad"]
     },
     {
         "type": "WorkflowActionScript",

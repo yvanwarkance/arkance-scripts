@@ -2,7 +2,12 @@
  * @NApiVersion 2.1
  * @NScriptType UserEventScript
  */
-define(['N/log', 'N/record', 'N/runtime', './Helpers/ARKA_CSTM_CheckEmployeeConnected'] /**
+define([
+    'N/log',
+    'N/record',
+    'N/runtime',
+    './Scripts/bluebeamHandleDynamicSalesRep/Helpers/ARKA_CSTM_CheckEmployeeConnected',
+] /**
  * @param{log} log
  * @param{record} record
  * @param{runtime} runtime

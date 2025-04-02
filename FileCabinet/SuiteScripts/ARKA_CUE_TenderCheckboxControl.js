@@ -24,7 +24,7 @@ define(['N/currentRecord', 'N/ui/message', 'N/search', 'N/record', 'N/ui/dialog'
      * this will be on Estimate & Opportunity
      * @param {Object} scriptContext - The script context.
      * @param {Record} scriptContext.currentRecord - Current record being accessed.
-     * @goverance
+     * @goverance 0 Units
      */
     function pageInit(scriptContext) {
         currentRec = scriptContext.currentRecord

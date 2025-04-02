@@ -1,0 +1,20 @@
+
+            <clientscript 
+                scriptid="customscript_cue_est_dispatcher1"
+            >
+                <name>ARKA_CUE_Est_dispatcher1</name>
+                <notifyowner>T</notifyowner>
+                <scriptfile>[/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1.js]</scriptfile>
+                <description>This is a ClientScript dispatcher for the estimate record. It's purpose is to combine the scripts: ARKA_CUE_FutureGroupValidations, ARKA_CUE_BluebeamHandleDynamicSalesRep, ARKA_CUE_fillContactOptions, ARKA_CUE_NBEPersonas, ARKA_CUE_TenderCheckboxControl, ARKA_CUE_TransactionDepValidation, ARKA_CUE_RemoveCustomerStatuses, ARKA_CUE_SetExpectedCloseDateField, ARKA_EST_SetContractFields onto a single file for performance improvements. Please refer to each individual file to see how they works</description>
+                <scriptdeployments>
+                    <scriptdeployment scriptid="customdeploy_cue_est_dispatcher1">
+                        <isdeployed>T</isdeployed>
+                        <loglevel>DEBUG</loglevel>
+                        <recordtype>ESTIMATE</recordtype>
+                        <status>RELEASED</status>
+                        false
+                        <allroles>T</allroles>
+                    </scriptdeployment>
+                </scriptdeployments>
+            </clientscript>       
+        

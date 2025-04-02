@@ -5,13 +5,15 @@
                 <name>ARKA_SUE_Est_dispatcher1</name>
                 <notifyowner>T</notifyowner>
                 <scriptfile>[/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js]</scriptfile>
-                <description>This is a UserEventScript dispatcher for the estimate record. It's purpose is to combine the scripts: ARKA_SUE_NBEPersonas onto a single file for performance improvements. Please refer to each individual file to see how they works</description>
+                <description>This is a UserEventScript dispatcher for the estimate record. It's purpose is to combine the scripts: ARKA_SUE_RenewalProcessEshopNetSuite, ARKA_SUE_SetContractNumber onto a single file for performance improvements. Please refer to each individual file to see how they works</description>
                 <scriptdeployments>
                     <scriptdeployment scriptid="customdeploy_sue_est_dispatcher1">
                         <isdeployed>T</isdeployed>
                         <loglevel>DEBUG</loglevel>
                         <recordtype>ESTIMATE</recordtype>
                         <status>RELEASED</status>
+                        <runasrole>ADMINISTRATOR</runasrole>
+                        <allroles>T</allroles>
                     </scriptdeployment>
                 </scriptdeployments>
             </usereventscript>       

@@ -1,14 +1,42 @@
 <deploy>
-      <configuration>
+    <configuration>
         <path>~/AccountConfiguration/*</path>
-      </configuration>
-      <files>
+    </configuration>
+    <files>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_RenewalProcessEshopNetSuite.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_SetContractNumber.js</path>
         <path>~/FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js</path>
-      </files>
-      <objects>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_AddSyncQuoteButton.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_AutodeskNxmFieldValidation.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_BluebeamHandleDynamicSalesRep.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_CalculateExtendedCostAndPoRate.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_CheckOutsideItemGroup.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_CreateContactManagerField.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_DatechFieldValidation.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_DisplayWarningEstMessage.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_DuplicateEstimate.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_LimitTransactionStatus.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_NBEPersonas.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_SUE_WarningOnTransaction.js</path>
+        <path>~/FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher2.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_FutureGroupValidations.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_BluebeamHandleDynamicSalesRep.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_fillContactOptions.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_NBEPersonas.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_TenderCheckboxControl.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_TransactionDepValidation.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js</path>
+        <path>~/FileCabinet/SuiteScripts/ARKA_EST_SetContractFields.js</path>
+        <path>~/FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1.js</path>
+    </files>
+    <objects>
         <path>~/Objects/Estimate/customscript_sue_est_dispatcher1.xml</path>
-      </objects>
-      <translationimports>
+       <path>~/Objects/Estimate/customscript_sue_est_dispatcher2.xml</path>
+       <path>~/Objects/Estimate/customscript_cue_est_dispatcher1.xml</path>
+    </objects>
+    <translationimports>
         <path>~/Translations/*</path>
-      </translationimports>
-    </deploy>
+    </translationimports>
+</deploy>

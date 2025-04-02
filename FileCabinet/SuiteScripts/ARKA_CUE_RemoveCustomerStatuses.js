@@ -8,6 +8,7 @@ define([], function () {
      * Function to Hide 08 - Quote won status
      * Empty integration field on estimates
      * @param {*} context
+     * @governance 0 Units
      */
     function pageInit(context) {
         var recType = context.currentRecord.getValue('type')

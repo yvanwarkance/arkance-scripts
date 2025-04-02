@@ -23,6 +23,13 @@ define([
     var ORDER_TYPE_CONTRACT_RENEWAL = 2
     var AGACAD = 40
 
+    /**
+     * Function to get the missing contract items.
+     *
+     * @param {string} fromContractId
+     * @returns {Array} missingContractItems
+     * @governance 10 Units
+     */
     function getMissingContractItem(fromContractId) {
         var missingContractItems = []
 
@@ -328,6 +335,13 @@ define([
         return estimateThreeYr
     }
 
+    /**
+     * Function to get the estimate lines with 3 year version.
+     *
+     * @param {string} estimateOneYrId
+     * @returns {Array} estiLines
+     * @governance 10 Units
+     */
     function getEstLinesWith3YrVersion(estimateOneYrId) {
         var estiLines = []
 
@@ -603,6 +617,11 @@ define([
         }
     }
 
+    /**
+     * Function to initiate the schedule script.
+     *
+     * @governance 20 Units
+     */
     function initiateScheduleScript() {
         try {
             var scriptTask = task.create({

@@ -14,22 +14,17 @@
  * selected contract.
  *
  */
-define(['N/query', 'SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/record', 'N/ui/message'], function ( //function (query, record, BBE_LIB_GenericFunctionsSS2, search) { // jshint ignore:line
+define(['N/query', 'SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/record', 'N/ui/message'], function (
+    //function (query, record, BBE_LIB_GenericFunctionsSS2, search) { // jshint ignore:line
     query,
     bbeLib,
     record,
     msg
 ) {
     /**
-     *
-     * @param {Object} scriptContext
-     * @governance 10 units
-     */
-
-    /**
      * This function search for custbody_contract_manager_contact
      *
-     * @governance 0 unit
+     * @governance 20 unit
      */
     function fieldChangedSetOptions(context) {
         var currentRec = context.currentRecord
