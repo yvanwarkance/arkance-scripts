@@ -1,5 +1,17 @@
 [
     {
+        "name": "./ARKA_SUE_RenewalProcessEshopNetSuite.js",
+        "units": 450,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
+        "name": "./ARKA_SUE_SetContractNumber.js",
+        "units": 450,
+        "type": "UserEventScript",
+        "recordType": "Estimate"
+    },
+    {
         "name": "./ARKA_CUE_FutureGroupValidations.js",
         "units": 46,
         "type": "ClientScript",
@@ -120,26 +132,8 @@
         "recordType": "Estimate"
     },
     {
-        "name": "./ARKA_SUE_RenewalProcessEshopNetSuite.js",
-        "units": 36,
-        "type": "UserEventScript",
-        "recordType": "Estimate"
-    },
-    {
-        "name": "./ARKA_SUE_SetContractNumber.js",
-        "units": 50,
-        "type": "UserEventScript",
-        "recordType": "Estimate"
-    },
-    {
         "name": "./ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js",
         "units": 40,
-        "type": "UserEventScript",
-        "recordType": "Estimate"
-    },
-    {
-        "name": "./ARKA_SUE_TransactionDepValidation.js",
-        "units": 30,
         "type": "UserEventScript",
         "recordType": "Estimate"
     },

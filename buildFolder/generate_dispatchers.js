@@ -124,34 +124,45 @@ try {
                 ${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => `"${singleDispatcherHeaderPath.headerPath}"`).join(',')}
             ],
 
-            function(
+            (
                 ${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => singleDispatcherHeaderPath.headerModuleName).join(',')}
-            ) {
+            ) => {
                 
                 // Display simply entry points detected as functions
                 ${filteredDispatcherBodyFunctions
                     .map(
                         (singleDispatcherBodyFunction) =>
                             `
-                    const ${singleDispatcherBodyFunction} = (scriptContext) => {
-                        log.debug({
-                            title: '${singleDispatcher.scriptType}',
-                            details: {
-                                title: 'Running the ${singleDispatcherBodyFunction} entrypoint from the dispatcher file ${singleDispatcher.path}',
-                                scriptsLoaded: [${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => `"${singleDispatcherHeaderPath.headerModuleName}"`).join(', ')}],
+                    const ${singleDispatcherBodyFunction} = async (scriptContext) => {
+                        try {
+                            log.debug({
+                                title: '${singleDispatcher.scriptType}',
+                                details: {
+                                    title: 'Running the ${singleDispatcherBodyFunction} entrypoint from the dispatcher file ${singleDispatcher.path}',
+                                    scriptsLoaded: [${dispatcherHeaderPaths.map((singleDispatcherHeaderPath) => `"${singleDispatcherHeaderPath.headerModuleName}"`).join(', ')}],
+                                    },
+                            })
+                            ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `let result = true;` : ''}
+                            ${dispatcherHeaderPaths
+                                .map(
+                                    (singleDispatcherHeaderPath) =>
+                                        `
+                                        if (typeof ${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction} === 'function') {
+                                            ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `result = result && ` : ''}await ${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction}(scriptContext);
+                                        }`
+                                )
+                                .join('')}
+                            ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `return result;` : ''}
+                        } catch (err) {
+                            // On error catch, send message to all developpers
+                            log.error({
+                                title: '${singleDispatcher.scriptType}',
+                                details: {
+                                    title: 'Error running the ${singleDispatcherBodyFunction} entrypoint from the dispatcher file ${singleDispatcher.path}',
+                                    error: err,
                                 },
-                        })
-                        ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `let result = true;` : ''}
-                        ${dispatcherHeaderPaths
-                            .map(
-                                (singleDispatcherHeaderPath) =>
-                                    `
-                                    if (typeof ${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction} === 'function') {
-                                        ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `result = result && ` : ''}${singleDispatcherHeaderPath.headerModuleName}.${singleDispatcherBodyFunction}(scriptContext);
-                                    }`
-                            )
-                            .join('')}
-                        ${singleDispatcherBodyFunction === 'validateLine' || singleDispatcherBodyFunction === 'validateField' || singleDispatcherBodyFunction === 'validateDelete' || singleDispatcherBodyFunction === 'validateInsert' || singleDispatcherBodyFunction === 'saveRecord' ? `return result;` : ''}
+                            });
+                        }
                     };`
                     )
                     .join('\n')}

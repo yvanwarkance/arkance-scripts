@@ -16,7 +16,7 @@ define([
     '../../../../../ARKA_CUE_RemoveCustomerStatuses.js',
     '../../../../../ARKA_CUE_SetExpectedCloseDateField.js',
     '../../../../../ARKA_EST_SetContractFields.js',
-], function (
+], (
     ARKA_CUE_FutureGroupValidations,
     ARKA_CUE_BluebeamHandleDynamicSalesRep,
     ARKA_CUE_fillContactOptions,
@@ -26,300 +26,366 @@ define([
     ARKA_CUE_RemoveCustomerStatuses,
     ARKA_CUE_SetExpectedCloseDateField,
     ARKA_EST_SetContractFields
-) {
+) => {
     // Display simply entry points detected as functions
 
-    const fieldChanged = (scriptContext) => {
-        log.debug({
-            title: 'ClientScript',
-            details: {
-                title: 'Running the fieldChanged entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
-                scriptsLoaded: [
-                    'ARKA_CUE_FutureGroupValidations',
-                    'ARKA_CUE_BluebeamHandleDynamicSalesRep',
-                    'ARKA_CUE_fillContactOptions',
-                    'ARKA_CUE_NBEPersonas',
-                    'ARKA_CUE_TenderCheckboxControl',
-                    'ARKA_CUE_TransactionDepValidation',
-                    'ARKA_CUE_RemoveCustomerStatuses',
-                    'ARKA_CUE_SetExpectedCloseDateField',
-                    'ARKA_EST_SetContractFields',
-                ],
-            },
-        })
+    const fieldChanged = async (scriptContext) => {
+        try {
+            log.debug({
+                title: 'ClientScript',
+                details: {
+                    title: 'Running the fieldChanged entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    scriptsLoaded: [
+                        'ARKA_CUE_FutureGroupValidations',
+                        'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+                        'ARKA_CUE_fillContactOptions',
+                        'ARKA_CUE_NBEPersonas',
+                        'ARKA_CUE_TenderCheckboxControl',
+                        'ARKA_CUE_TransactionDepValidation',
+                        'ARKA_CUE_RemoveCustomerStatuses',
+                        'ARKA_CUE_SetExpectedCloseDateField',
+                        'ARKA_EST_SetContractFields',
+                    ],
+                },
+            })
 
-        if (typeof ARKA_CUE_FutureGroupValidations.fieldChanged === 'function') {
-            ARKA_CUE_FutureGroupValidations.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.fieldChanged === 'function') {
-            ARKA_CUE_BluebeamHandleDynamicSalesRep.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_fillContactOptions.fieldChanged === 'function') {
-            ARKA_CUE_fillContactOptions.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_NBEPersonas.fieldChanged === 'function') {
-            ARKA_CUE_NBEPersonas.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_TenderCheckboxControl.fieldChanged === 'function') {
-            ARKA_CUE_TenderCheckboxControl.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_TransactionDepValidation.fieldChanged === 'function') {
-            ARKA_CUE_TransactionDepValidation.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_RemoveCustomerStatuses.fieldChanged === 'function') {
-            ARKA_CUE_RemoveCustomerStatuses.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_CUE_SetExpectedCloseDateField.fieldChanged === 'function') {
-            ARKA_CUE_SetExpectedCloseDateField.fieldChanged(scriptContext)
-        }
-        if (typeof ARKA_EST_SetContractFields.fieldChanged === 'function') {
-            ARKA_EST_SetContractFields.fieldChanged(scriptContext)
+            if (typeof ARKA_CUE_FutureGroupValidations.fieldChanged === 'function') {
+                await ARKA_CUE_FutureGroupValidations.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.fieldChanged === 'function') {
+                await ARKA_CUE_BluebeamHandleDynamicSalesRep.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_fillContactOptions.fieldChanged === 'function') {
+                await ARKA_CUE_fillContactOptions.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_NBEPersonas.fieldChanged === 'function') {
+                await ARKA_CUE_NBEPersonas.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_TenderCheckboxControl.fieldChanged === 'function') {
+                await ARKA_CUE_TenderCheckboxControl.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_TransactionDepValidation.fieldChanged === 'function') {
+                await ARKA_CUE_TransactionDepValidation.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_RemoveCustomerStatuses.fieldChanged === 'function') {
+                await ARKA_CUE_RemoveCustomerStatuses.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_CUE_SetExpectedCloseDateField.fieldChanged === 'function') {
+                await ARKA_CUE_SetExpectedCloseDateField.fieldChanged(scriptContext)
+            }
+            if (typeof ARKA_EST_SetContractFields.fieldChanged === 'function') {
+                await ARKA_EST_SetContractFields.fieldChanged(scriptContext)
+            }
+        } catch (err) {
+            // On error catch, send message to all developpers
+            log.error({
+                title: 'ClientScript',
+                details: {
+                    title: 'Error running the fieldChanged entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    error: err,
+                },
+            })
         }
     }
 
-    const saveRecord = (scriptContext) => {
-        log.debug({
-            title: 'ClientScript',
-            details: {
-                title: 'Running the saveRecord entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
-                scriptsLoaded: [
-                    'ARKA_CUE_FutureGroupValidations',
-                    'ARKA_CUE_BluebeamHandleDynamicSalesRep',
-                    'ARKA_CUE_fillContactOptions',
-                    'ARKA_CUE_NBEPersonas',
-                    'ARKA_CUE_TenderCheckboxControl',
-                    'ARKA_CUE_TransactionDepValidation',
-                    'ARKA_CUE_RemoveCustomerStatuses',
-                    'ARKA_CUE_SetExpectedCloseDateField',
-                    'ARKA_EST_SetContractFields',
-                ],
-            },
-        })
-        let result = true
+    const saveRecord = async (scriptContext) => {
+        try {
+            log.debug({
+                title: 'ClientScript',
+                details: {
+                    title: 'Running the saveRecord entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    scriptsLoaded: [
+                        'ARKA_CUE_FutureGroupValidations',
+                        'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+                        'ARKA_CUE_fillContactOptions',
+                        'ARKA_CUE_NBEPersonas',
+                        'ARKA_CUE_TenderCheckboxControl',
+                        'ARKA_CUE_TransactionDepValidation',
+                        'ARKA_CUE_RemoveCustomerStatuses',
+                        'ARKA_CUE_SetExpectedCloseDateField',
+                        'ARKA_EST_SetContractFields',
+                    ],
+                },
+            })
+            let result = true
 
-        if (typeof ARKA_CUE_FutureGroupValidations.saveRecord === 'function') {
-            result = result && ARKA_CUE_FutureGroupValidations.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.saveRecord === 'function') {
-            result = result && ARKA_CUE_BluebeamHandleDynamicSalesRep.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_fillContactOptions.saveRecord === 'function') {
-            result = result && ARKA_CUE_fillContactOptions.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_NBEPersonas.saveRecord === 'function') {
-            result = result && ARKA_CUE_NBEPersonas.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_TenderCheckboxControl.saveRecord === 'function') {
-            result = result && ARKA_CUE_TenderCheckboxControl.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_TransactionDepValidation.saveRecord === 'function') {
-            result = result && ARKA_CUE_TransactionDepValidation.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_RemoveCustomerStatuses.saveRecord === 'function') {
-            result = result && ARKA_CUE_RemoveCustomerStatuses.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_CUE_SetExpectedCloseDateField.saveRecord === 'function') {
-            result = result && ARKA_CUE_SetExpectedCloseDateField.saveRecord(scriptContext)
-        }
-        if (typeof ARKA_EST_SetContractFields.saveRecord === 'function') {
-            result = result && ARKA_EST_SetContractFields.saveRecord(scriptContext)
-        }
-        return result
-    }
-
-    const validateField = (scriptContext) => {
-        log.debug({
-            title: 'ClientScript',
-            details: {
-                title: 'Running the validateField entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
-                scriptsLoaded: [
-                    'ARKA_CUE_FutureGroupValidations',
-                    'ARKA_CUE_BluebeamHandleDynamicSalesRep',
-                    'ARKA_CUE_fillContactOptions',
-                    'ARKA_CUE_NBEPersonas',
-                    'ARKA_CUE_TenderCheckboxControl',
-                    'ARKA_CUE_TransactionDepValidation',
-                    'ARKA_CUE_RemoveCustomerStatuses',
-                    'ARKA_CUE_SetExpectedCloseDateField',
-                    'ARKA_EST_SetContractFields',
-                ],
-            },
-        })
-        let result = true
-
-        if (typeof ARKA_CUE_FutureGroupValidations.validateField === 'function') {
-            result = result && ARKA_CUE_FutureGroupValidations.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.validateField === 'function') {
-            result = result && ARKA_CUE_BluebeamHandleDynamicSalesRep.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_fillContactOptions.validateField === 'function') {
-            result = result && ARKA_CUE_fillContactOptions.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_NBEPersonas.validateField === 'function') {
-            result = result && ARKA_CUE_NBEPersonas.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_TenderCheckboxControl.validateField === 'function') {
-            result = result && ARKA_CUE_TenderCheckboxControl.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_TransactionDepValidation.validateField === 'function') {
-            result = result && ARKA_CUE_TransactionDepValidation.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_RemoveCustomerStatuses.validateField === 'function') {
-            result = result && ARKA_CUE_RemoveCustomerStatuses.validateField(scriptContext)
-        }
-        if (typeof ARKA_CUE_SetExpectedCloseDateField.validateField === 'function') {
-            result = result && ARKA_CUE_SetExpectedCloseDateField.validateField(scriptContext)
-        }
-        if (typeof ARKA_EST_SetContractFields.validateField === 'function') {
-            result = result && ARKA_EST_SetContractFields.validateField(scriptContext)
-        }
-        return result
-    }
-
-    const validateLine = (scriptContext) => {
-        log.debug({
-            title: 'ClientScript',
-            details: {
-                title: 'Running the validateLine entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
-                scriptsLoaded: [
-                    'ARKA_CUE_FutureGroupValidations',
-                    'ARKA_CUE_BluebeamHandleDynamicSalesRep',
-                    'ARKA_CUE_fillContactOptions',
-                    'ARKA_CUE_NBEPersonas',
-                    'ARKA_CUE_TenderCheckboxControl',
-                    'ARKA_CUE_TransactionDepValidation',
-                    'ARKA_CUE_RemoveCustomerStatuses',
-                    'ARKA_CUE_SetExpectedCloseDateField',
-                    'ARKA_EST_SetContractFields',
-                ],
-            },
-        })
-        let result = true
-
-        if (typeof ARKA_CUE_FutureGroupValidations.validateLine === 'function') {
-            result = result && ARKA_CUE_FutureGroupValidations.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.validateLine === 'function') {
-            result = result && ARKA_CUE_BluebeamHandleDynamicSalesRep.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_fillContactOptions.validateLine === 'function') {
-            result = result && ARKA_CUE_fillContactOptions.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_NBEPersonas.validateLine === 'function') {
-            result = result && ARKA_CUE_NBEPersonas.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_TenderCheckboxControl.validateLine === 'function') {
-            result = result && ARKA_CUE_TenderCheckboxControl.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_TransactionDepValidation.validateLine === 'function') {
-            result = result && ARKA_CUE_TransactionDepValidation.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_RemoveCustomerStatuses.validateLine === 'function') {
-            result = result && ARKA_CUE_RemoveCustomerStatuses.validateLine(scriptContext)
-        }
-        if (typeof ARKA_CUE_SetExpectedCloseDateField.validateLine === 'function') {
-            result = result && ARKA_CUE_SetExpectedCloseDateField.validateLine(scriptContext)
-        }
-        if (typeof ARKA_EST_SetContractFields.validateLine === 'function') {
-            result = result && ARKA_EST_SetContractFields.validateLine(scriptContext)
-        }
-        return result
-    }
-
-    const pageInit = (scriptContext) => {
-        log.debug({
-            title: 'ClientScript',
-            details: {
-                title: 'Running the pageInit entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
-                scriptsLoaded: [
-                    'ARKA_CUE_FutureGroupValidations',
-                    'ARKA_CUE_BluebeamHandleDynamicSalesRep',
-                    'ARKA_CUE_fillContactOptions',
-                    'ARKA_CUE_NBEPersonas',
-                    'ARKA_CUE_TenderCheckboxControl',
-                    'ARKA_CUE_TransactionDepValidation',
-                    'ARKA_CUE_RemoveCustomerStatuses',
-                    'ARKA_CUE_SetExpectedCloseDateField',
-                    'ARKA_EST_SetContractFields',
-                ],
-            },
-        })
-
-        if (typeof ARKA_CUE_FutureGroupValidations.pageInit === 'function') {
-            ARKA_CUE_FutureGroupValidations.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.pageInit === 'function') {
-            ARKA_CUE_BluebeamHandleDynamicSalesRep.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_fillContactOptions.pageInit === 'function') {
-            ARKA_CUE_fillContactOptions.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_NBEPersonas.pageInit === 'function') {
-            ARKA_CUE_NBEPersonas.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_TenderCheckboxControl.pageInit === 'function') {
-            ARKA_CUE_TenderCheckboxControl.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_TransactionDepValidation.pageInit === 'function') {
-            ARKA_CUE_TransactionDepValidation.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_RemoveCustomerStatuses.pageInit === 'function') {
-            ARKA_CUE_RemoveCustomerStatuses.pageInit(scriptContext)
-        }
-        if (typeof ARKA_CUE_SetExpectedCloseDateField.pageInit === 'function') {
-            ARKA_CUE_SetExpectedCloseDateField.pageInit(scriptContext)
-        }
-        if (typeof ARKA_EST_SetContractFields.pageInit === 'function') {
-            ARKA_EST_SetContractFields.pageInit(scriptContext)
+            if (typeof ARKA_CUE_FutureGroupValidations.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_FutureGroupValidations.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_BluebeamHandleDynamicSalesRep.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_fillContactOptions.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_fillContactOptions.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_NBEPersonas.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_NBEPersonas.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_TenderCheckboxControl.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_TenderCheckboxControl.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_TransactionDepValidation.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_TransactionDepValidation.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_RemoveCustomerStatuses.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_RemoveCustomerStatuses.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_CUE_SetExpectedCloseDateField.saveRecord === 'function') {
+                result = result && (await ARKA_CUE_SetExpectedCloseDateField.saveRecord(scriptContext))
+            }
+            if (typeof ARKA_EST_SetContractFields.saveRecord === 'function') {
+                result = result && (await ARKA_EST_SetContractFields.saveRecord(scriptContext))
+            }
+            return result
+        } catch (err) {
+            // On error catch, send message to all developpers
+            log.error({
+                title: 'ClientScript',
+                details: {
+                    title: 'Error running the saveRecord entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    error: err,
+                },
+            })
         }
     }
 
-    const postSourcing = (scriptContext) => {
-        log.debug({
-            title: 'ClientScript',
-            details: {
-                title: 'Running the postSourcing entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
-                scriptsLoaded: [
-                    'ARKA_CUE_FutureGroupValidations',
-                    'ARKA_CUE_BluebeamHandleDynamicSalesRep',
-                    'ARKA_CUE_fillContactOptions',
-                    'ARKA_CUE_NBEPersonas',
-                    'ARKA_CUE_TenderCheckboxControl',
-                    'ARKA_CUE_TransactionDepValidation',
-                    'ARKA_CUE_RemoveCustomerStatuses',
-                    'ARKA_CUE_SetExpectedCloseDateField',
-                    'ARKA_EST_SetContractFields',
-                ],
-            },
-        })
+    const validateField = async (scriptContext) => {
+        try {
+            log.debug({
+                title: 'ClientScript',
+                details: {
+                    title: 'Running the validateField entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    scriptsLoaded: [
+                        'ARKA_CUE_FutureGroupValidations',
+                        'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+                        'ARKA_CUE_fillContactOptions',
+                        'ARKA_CUE_NBEPersonas',
+                        'ARKA_CUE_TenderCheckboxControl',
+                        'ARKA_CUE_TransactionDepValidation',
+                        'ARKA_CUE_RemoveCustomerStatuses',
+                        'ARKA_CUE_SetExpectedCloseDateField',
+                        'ARKA_EST_SetContractFields',
+                    ],
+                },
+            })
+            let result = true
 
-        if (typeof ARKA_CUE_FutureGroupValidations.postSourcing === 'function') {
-            ARKA_CUE_FutureGroupValidations.postSourcing(scriptContext)
+            if (typeof ARKA_CUE_FutureGroupValidations.validateField === 'function') {
+                result = result && (await ARKA_CUE_FutureGroupValidations.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.validateField === 'function') {
+                result = result && (await ARKA_CUE_BluebeamHandleDynamicSalesRep.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_fillContactOptions.validateField === 'function') {
+                result = result && (await ARKA_CUE_fillContactOptions.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_NBEPersonas.validateField === 'function') {
+                result = result && (await ARKA_CUE_NBEPersonas.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_TenderCheckboxControl.validateField === 'function') {
+                result = result && (await ARKA_CUE_TenderCheckboxControl.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_TransactionDepValidation.validateField === 'function') {
+                result = result && (await ARKA_CUE_TransactionDepValidation.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_RemoveCustomerStatuses.validateField === 'function') {
+                result = result && (await ARKA_CUE_RemoveCustomerStatuses.validateField(scriptContext))
+            }
+            if (typeof ARKA_CUE_SetExpectedCloseDateField.validateField === 'function') {
+                result = result && (await ARKA_CUE_SetExpectedCloseDateField.validateField(scriptContext))
+            }
+            if (typeof ARKA_EST_SetContractFields.validateField === 'function') {
+                result = result && (await ARKA_EST_SetContractFields.validateField(scriptContext))
+            }
+            return result
+        } catch (err) {
+            // On error catch, send message to all developpers
+            log.error({
+                title: 'ClientScript',
+                details: {
+                    title: 'Error running the validateField entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    error: err,
+                },
+            })
         }
-        if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.postSourcing === 'function') {
-            ARKA_CUE_BluebeamHandleDynamicSalesRep.postSourcing(scriptContext)
+    }
+
+    const validateLine = async (scriptContext) => {
+        try {
+            log.debug({
+                title: 'ClientScript',
+                details: {
+                    title: 'Running the validateLine entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    scriptsLoaded: [
+                        'ARKA_CUE_FutureGroupValidations',
+                        'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+                        'ARKA_CUE_fillContactOptions',
+                        'ARKA_CUE_NBEPersonas',
+                        'ARKA_CUE_TenderCheckboxControl',
+                        'ARKA_CUE_TransactionDepValidation',
+                        'ARKA_CUE_RemoveCustomerStatuses',
+                        'ARKA_CUE_SetExpectedCloseDateField',
+                        'ARKA_EST_SetContractFields',
+                    ],
+                },
+            })
+            let result = true
+
+            if (typeof ARKA_CUE_FutureGroupValidations.validateLine === 'function') {
+                result = result && (await ARKA_CUE_FutureGroupValidations.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.validateLine === 'function') {
+                result = result && (await ARKA_CUE_BluebeamHandleDynamicSalesRep.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_fillContactOptions.validateLine === 'function') {
+                result = result && (await ARKA_CUE_fillContactOptions.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_NBEPersonas.validateLine === 'function') {
+                result = result && (await ARKA_CUE_NBEPersonas.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_TenderCheckboxControl.validateLine === 'function') {
+                result = result && (await ARKA_CUE_TenderCheckboxControl.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_TransactionDepValidation.validateLine === 'function') {
+                result = result && (await ARKA_CUE_TransactionDepValidation.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_RemoveCustomerStatuses.validateLine === 'function') {
+                result = result && (await ARKA_CUE_RemoveCustomerStatuses.validateLine(scriptContext))
+            }
+            if (typeof ARKA_CUE_SetExpectedCloseDateField.validateLine === 'function') {
+                result = result && (await ARKA_CUE_SetExpectedCloseDateField.validateLine(scriptContext))
+            }
+            if (typeof ARKA_EST_SetContractFields.validateLine === 'function') {
+                result = result && (await ARKA_EST_SetContractFields.validateLine(scriptContext))
+            }
+            return result
+        } catch (err) {
+            // On error catch, send message to all developpers
+            log.error({
+                title: 'ClientScript',
+                details: {
+                    title: 'Error running the validateLine entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    error: err,
+                },
+            })
         }
-        if (typeof ARKA_CUE_fillContactOptions.postSourcing === 'function') {
-            ARKA_CUE_fillContactOptions.postSourcing(scriptContext)
+    }
+
+    const pageInit = async (scriptContext) => {
+        try {
+            log.debug({
+                title: 'ClientScript',
+                details: {
+                    title: 'Running the pageInit entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    scriptsLoaded: [
+                        'ARKA_CUE_FutureGroupValidations',
+                        'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+                        'ARKA_CUE_fillContactOptions',
+                        'ARKA_CUE_NBEPersonas',
+                        'ARKA_CUE_TenderCheckboxControl',
+                        'ARKA_CUE_TransactionDepValidation',
+                        'ARKA_CUE_RemoveCustomerStatuses',
+                        'ARKA_CUE_SetExpectedCloseDateField',
+                        'ARKA_EST_SetContractFields',
+                    ],
+                },
+            })
+
+            if (typeof ARKA_CUE_FutureGroupValidations.pageInit === 'function') {
+                await ARKA_CUE_FutureGroupValidations.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.pageInit === 'function') {
+                await ARKA_CUE_BluebeamHandleDynamicSalesRep.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_fillContactOptions.pageInit === 'function') {
+                await ARKA_CUE_fillContactOptions.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_NBEPersonas.pageInit === 'function') {
+                await ARKA_CUE_NBEPersonas.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_TenderCheckboxControl.pageInit === 'function') {
+                await ARKA_CUE_TenderCheckboxControl.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_TransactionDepValidation.pageInit === 'function') {
+                await ARKA_CUE_TransactionDepValidation.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_RemoveCustomerStatuses.pageInit === 'function') {
+                await ARKA_CUE_RemoveCustomerStatuses.pageInit(scriptContext)
+            }
+            if (typeof ARKA_CUE_SetExpectedCloseDateField.pageInit === 'function') {
+                await ARKA_CUE_SetExpectedCloseDateField.pageInit(scriptContext)
+            }
+            if (typeof ARKA_EST_SetContractFields.pageInit === 'function') {
+                await ARKA_EST_SetContractFields.pageInit(scriptContext)
+            }
+        } catch (err) {
+            // On error catch, send message to all developpers
+            log.error({
+                title: 'ClientScript',
+                details: {
+                    title: 'Error running the pageInit entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    error: err,
+                },
+            })
         }
-        if (typeof ARKA_CUE_NBEPersonas.postSourcing === 'function') {
-            ARKA_CUE_NBEPersonas.postSourcing(scriptContext)
-        }
-        if (typeof ARKA_CUE_TenderCheckboxControl.postSourcing === 'function') {
-            ARKA_CUE_TenderCheckboxControl.postSourcing(scriptContext)
-        }
-        if (typeof ARKA_CUE_TransactionDepValidation.postSourcing === 'function') {
-            ARKA_CUE_TransactionDepValidation.postSourcing(scriptContext)
-        }
-        if (typeof ARKA_CUE_RemoveCustomerStatuses.postSourcing === 'function') {
-            ARKA_CUE_RemoveCustomerStatuses.postSourcing(scriptContext)
-        }
-        if (typeof ARKA_CUE_SetExpectedCloseDateField.postSourcing === 'function') {
-            ARKA_CUE_SetExpectedCloseDateField.postSourcing(scriptContext)
-        }
-        if (typeof ARKA_EST_SetContractFields.postSourcing === 'function') {
-            ARKA_EST_SetContractFields.postSourcing(scriptContext)
+    }
+
+    const postSourcing = async (scriptContext) => {
+        try {
+            log.debug({
+                title: 'ClientScript',
+                details: {
+                    title: 'Running the postSourcing entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    scriptsLoaded: [
+                        'ARKA_CUE_FutureGroupValidations',
+                        'ARKA_CUE_BluebeamHandleDynamicSalesRep',
+                        'ARKA_CUE_fillContactOptions',
+                        'ARKA_CUE_NBEPersonas',
+                        'ARKA_CUE_TenderCheckboxControl',
+                        'ARKA_CUE_TransactionDepValidation',
+                        'ARKA_CUE_RemoveCustomerStatuses',
+                        'ARKA_CUE_SetExpectedCloseDateField',
+                        'ARKA_EST_SetContractFields',
+                    ],
+                },
+            })
+
+            if (typeof ARKA_CUE_FutureGroupValidations.postSourcing === 'function') {
+                await ARKA_CUE_FutureGroupValidations.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_BluebeamHandleDynamicSalesRep.postSourcing === 'function') {
+                await ARKA_CUE_BluebeamHandleDynamicSalesRep.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_fillContactOptions.postSourcing === 'function') {
+                await ARKA_CUE_fillContactOptions.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_NBEPersonas.postSourcing === 'function') {
+                await ARKA_CUE_NBEPersonas.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_TenderCheckboxControl.postSourcing === 'function') {
+                await ARKA_CUE_TenderCheckboxControl.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_TransactionDepValidation.postSourcing === 'function') {
+                await ARKA_CUE_TransactionDepValidation.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_RemoveCustomerStatuses.postSourcing === 'function') {
+                await ARKA_CUE_RemoveCustomerStatuses.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_CUE_SetExpectedCloseDateField.postSourcing === 'function') {
+                await ARKA_CUE_SetExpectedCloseDateField.postSourcing(scriptContext)
+            }
+            if (typeof ARKA_EST_SetContractFields.postSourcing === 'function') {
+                await ARKA_EST_SetContractFields.postSourcing(scriptContext)
+            }
+        } catch (err) {
+            // On error catch, send message to all developpers
+            log.error({
+                title: 'ClientScript',
+                details: {
+                    title: 'Error running the postSourcing entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1',
+                    error: err,
+                },
+            })
         }
     }
 
