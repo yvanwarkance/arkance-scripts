@@ -37,12 +37,13 @@ define([
             }
         }
 
-        if (
+        //Future group no longer exist
+        /*if (
             scriptContext.currentRecord.type == record.Type.SALES_ORDER ||
             scriptContext.currentRecord.type == record.Type.ESTIMATE
         ) {
             return validateFGConstraints(scriptContext)
-        }
+        }*/
 
         return true
     }
