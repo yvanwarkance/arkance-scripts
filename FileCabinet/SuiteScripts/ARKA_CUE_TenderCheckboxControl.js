@@ -4,13 +4,13 @@
  * @NModuleScope SameAccount
  */
 
-define(['N/currentRecord', 'N/ui/message', 'N/search', 'N/record', 'N/ui/dialog', 'N/runtime'], function (
+define(['N/currentRecord', 'N/ui/message', 'N/record', 'N/ui/dialog', 'N/runtime', 'N/query'], function (
     currentRecord,
     message,
-    search,
     record,
     dialog,
-    runtime
+    runtime,
+    query
 ) {
     let currentRec
     const percentagesProbabilityArray = [10, 20, 40, 75, 90, 99, 100, 0]
@@ -127,40 +127,34 @@ define(['N/currentRecord', 'N/ui/message', 'N/search', 'N/record', 'N/ui/dialog'
                 let fromContract = currentRec.getValue({ fieldId: 'custbody_contract_name' })
 
                 if (fromContract) {
-                    var contractSearchObj = search.create({
-                        type: 'customrecord_contracts',
-                        filters: [['isinactive', 'is', 'F'], 'AND', ['id', 'equalto', fromContract]],
-                        columns: [
-                            search.createColumn({
-                                name: 'formulatext1',
-                                formula: "TO_CHAR({custrecord_contracts_start_date}, 'YYYY-MM-DD')",
-                                label: 'Formula (Text)',
-                            }),
-                            search.createColumn({
-                                name: 'formulatext2',
-                                formula: "TO_CHAR({custrecord_contracts_end_date}, 'YYYY-MM-DD')",
-                                label: 'Formula (Text)',
-                            }),
-                        ],
-                    })
-                    var searchResultContract = contractSearchObj.run().getRange(0, 1)
-                    if (searchResultContract.length > 0) {
-                        var contractStartDate = searchResultContract[0].getValue({
-                            name: 'formulatext1',
-                            formula: "TO_CHAR({custrecord_contracts_start_date}, 'YYYY-MM-DD')",
-                            label: 'Formula (Text)',
-                        })
+
+                    let queryString = `
+                        SELECT
+                            TO_CHAR(c.custrecord_contracts_start_date, 'YYYY-MM-DD'),
+                            TO_CHAR(c.custrecord_contracts_end_date, 'YYYY-MM-DD')
+                        FROM
+                            customrecord_contracts c
+                        WHERE
+                            c.isinactive = 'F'
+                            AND c.id = ${fromContract}
+                    `;
+
+                    let resultSetContract = query.runSuiteQL({
+                        query: queryString
+                    }).results;
+                    
+                    if (resultSetContract.length > 0) {
+
+                        var contractStartDate = resultSetContract[0].values[0];
+
                         currentRec.setValue({
                             fieldId: 'custbody_startdate',
                             value: new Date(contractStartDate),
                             ignoreFieldChange: true,
                         })
 
-                        var contractEndDate = searchResultContract[0].getValue({
-                            name: 'formulatext2',
-                            formula: "TO_CHAR({custrecord_contracts_end_date}, 'YYYY-MM-DD')",
-                            label: 'Formula (Text)',
-                        })
+                        var contractEndDate = resultSetContract[0].values[1];
+                        
                         currentRec.setValue({
                             fieldId: 'custbody_enddate',
                             value: new Date(contractEndDate),
