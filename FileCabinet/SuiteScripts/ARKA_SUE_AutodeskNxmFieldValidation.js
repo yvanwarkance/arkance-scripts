@@ -4,9 +4,8 @@
  * @NScriptType UserEventScript
  */
 define(// jshint ignore:line
-['N/query', 'N/record', '/SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/ui/message', 'N/search'], function (
+['N/query', '/SuiteScripts/BBE_LIB_GenericFunctionsSS2.js', 'N/ui/message', 'N/search'], function (
     query,
-    record,
     bbeLib,
     message,
     search

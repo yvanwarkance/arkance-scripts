@@ -10,10 +10,9 @@ define([
     'N/url',
     'N/ui/message',
     'N/record',
-    'N/ui/serverWidget',
     'N/search',
     'N/runtime',
-], function (bbeLib, query, url, message, record, serverWidget, search, runtime) {
+], function (bbeLib, query, url, message, record, search, runtime) {
     const PROD_AUTODESK = '13'
     const SOFT_PROD_FLEX = '1711'
     const SOFT_PROD_AUTODESK_FLEX = '588'

@@ -4,7 +4,7 @@
  * @NScriptType UserEventScript
  * @NModuleScope SameAccount
  */
-define(['N/ui/serverWidget', 'N/query', 'N/runtime'], function (serverWidget, query, runtime) {
+define(['N/ui/serverWidget'], function (serverWidget) {
     var dropDownList = []
 
     /**
