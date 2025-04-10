@@ -31,7 +31,7 @@
       "ARKA_SUE_LimitTransactionStatus",
       "ARKA_SUE_NBEPersonas",
       "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate",
-      "ARKA_SUE_WarningOnTransaction"
+      "ARKA_CUE_WarningOnTransaction"
     ],
     "dispatcherFilesContentsPath": [
       "./SuiteScripts/ARKA_SUE_AddSyncQuoteButton.js",
@@ -46,7 +46,7 @@
       "./SuiteScripts/ARKA_SUE_LimitTransactionStatus.js",
       "./SuiteScripts/ARKA_SUE_NBEPersonas.js",
       "./SuiteScripts/ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js",
-      "./SuiteScripts/ARKA_SUE_WarningOnTransaction.js"
+      "./SuiteScripts/ARKA_CUE_WarningOnTransaction.js"
     ]
   },
   {

@@ -8,11 +8,11 @@
              * @governance 411 Units
              */
             define([
-                "../../../../../ARKA_SUE_AddSyncQuoteButton.js","../../../../../ARKA_SUE_AutodeskNxmFieldValidation.js","../../../../../ARKA_SUE_BluebeamHandleDynamicSalesRep.js","../../../../../ARKA_SUE_CalculateExtendedCostAndPoRate.js","../../../../../ARKA_SUE_CheckOutsideItemGroup.js","../../../../../ARKA_SUE_CreateContactManagerField.js","../../../../../ARKA_SUE_DatechFieldValidation.js","../../../../../ARKA_SUE_DisplayWarningEstMessage.js","../../../../../ARKA_SUE_DuplicateEstimate.js","../../../../../ARKA_SUE_LimitTransactionStatus.js","../../../../../ARKA_SUE_NBEPersonas.js","../../../../../ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js","../../../../../ARKA_SUE_WarningOnTransaction.js"
+                "../../../../../ARKA_SUE_AddSyncQuoteButton.js","../../../../../ARKA_SUE_AutodeskNxmFieldValidation.js","../../../../../ARKA_SUE_BluebeamHandleDynamicSalesRep.js","../../../../../ARKA_SUE_CalculateExtendedCostAndPoRate.js","../../../../../ARKA_SUE_CheckOutsideItemGroup.js","../../../../../ARKA_SUE_CreateContactManagerField.js","../../../../../ARKA_SUE_DatechFieldValidation.js","../../../../../ARKA_SUE_DisplayWarningEstMessage.js","../../../../../ARKA_SUE_DuplicateEstimate.js","../../../../../ARKA_SUE_LimitTransactionStatus.js","../../../../../ARKA_SUE_NBEPersonas.js","../../../../../ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js","../../../../../ARKA_CUE_WarningOnTransaction.js"
             ],
 
             (
-                ARKA_SUE_AddSyncQuoteButton,ARKA_SUE_AutodeskNxmFieldValidation,ARKA_SUE_BluebeamHandleDynamicSalesRep,ARKA_SUE_CalculateExtendedCostAndPoRate,ARKA_SUE_CheckOutsideItemGroup,ARKA_SUE_CreateContactManagerField,ARKA_SUE_DatechFieldValidation,ARKA_SUE_DisplayWarningEstMessage,ARKA_SUE_DuplicateEstimate,ARKA_SUE_LimitTransactionStatus,ARKA_SUE_NBEPersonas,ARKA_SUE_SetExpectedCloseDateFieldOnEstimate,ARKA_SUE_WarningOnTransaction
+                ARKA_SUE_AddSyncQuoteButton,ARKA_SUE_AutodeskNxmFieldValidation,ARKA_SUE_BluebeamHandleDynamicSalesRep,ARKA_SUE_CalculateExtendedCostAndPoRate,ARKA_SUE_CheckOutsideItemGroup,ARKA_SUE_CreateContactManagerField,ARKA_SUE_DatechFieldValidation,ARKA_SUE_DisplayWarningEstMessage,ARKA_SUE_DuplicateEstimate,ARKA_SUE_LimitTransactionStatus,ARKA_SUE_NBEPersonas,ARKA_SUE_SetExpectedCloseDateFieldOnEstimate,ARKA_CUE_WarningOnTransaction
             ) => {
                 
                 // Display simply entry points detected as functions
@@ -23,7 +23,7 @@
                                 title: 'UserEventScript',
                                 details: {
                                     title: 'Running the beforeLoad entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher2',
-                                    scriptsLoaded: ["ARKA_SUE_AddSyncQuoteButton", "ARKA_SUE_AutodeskNxmFieldValidation", "ARKA_SUE_BluebeamHandleDynamicSalesRep", "ARKA_SUE_CalculateExtendedCostAndPoRate", "ARKA_SUE_CheckOutsideItemGroup", "ARKA_SUE_CreateContactManagerField", "ARKA_SUE_DatechFieldValidation", "ARKA_SUE_DisplayWarningEstMessage", "ARKA_SUE_DuplicateEstimate", "ARKA_SUE_LimitTransactionStatus", "ARKA_SUE_NBEPersonas", "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate", "ARKA_SUE_WarningOnTransaction"],
+                                    scriptsLoaded: ["ARKA_SUE_AddSyncQuoteButton", "ARKA_SUE_AutodeskNxmFieldValidation", "ARKA_SUE_BluebeamHandleDynamicSalesRep", "ARKA_SUE_CalculateExtendedCostAndPoRate", "ARKA_SUE_CheckOutsideItemGroup", "ARKA_SUE_CreateContactManagerField", "ARKA_SUE_DatechFieldValidation", "ARKA_SUE_DisplayWarningEstMessage", "ARKA_SUE_DuplicateEstimate", "ARKA_SUE_LimitTransactionStatus", "ARKA_SUE_NBEPersonas", "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate", "ARKA_CUE_WarningOnTransaction"],
                                     },
                             })
                             
@@ -64,8 +64,8 @@
                                         if (typeof ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.beforeLoad === 'function') {
                                             await ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.beforeLoad(scriptContext);
                                         }
-                                        if (typeof ARKA_SUE_WarningOnTransaction.beforeLoad === 'function') {
-                                            await ARKA_SUE_WarningOnTransaction.beforeLoad(scriptContext);
+                                        if (typeof ARKA_CUE_WarningOnTransaction.beforeLoad === 'function') {
+                                            await ARKA_CUE_WarningOnTransaction.beforeLoad(scriptContext);
                                         }
                             
                         } catch (err) {
@@ -86,7 +86,7 @@
                                 title: 'UserEventScript',
                                 details: {
                                     title: 'Running the beforeSubmit entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher2',
-                                    scriptsLoaded: ["ARKA_SUE_AddSyncQuoteButton", "ARKA_SUE_AutodeskNxmFieldValidation", "ARKA_SUE_BluebeamHandleDynamicSalesRep", "ARKA_SUE_CalculateExtendedCostAndPoRate", "ARKA_SUE_CheckOutsideItemGroup", "ARKA_SUE_CreateContactManagerField", "ARKA_SUE_DatechFieldValidation", "ARKA_SUE_DisplayWarningEstMessage", "ARKA_SUE_DuplicateEstimate", "ARKA_SUE_LimitTransactionStatus", "ARKA_SUE_NBEPersonas", "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate", "ARKA_SUE_WarningOnTransaction"],
+                                    scriptsLoaded: ["ARKA_SUE_AddSyncQuoteButton", "ARKA_SUE_AutodeskNxmFieldValidation", "ARKA_SUE_BluebeamHandleDynamicSalesRep", "ARKA_SUE_CalculateExtendedCostAndPoRate", "ARKA_SUE_CheckOutsideItemGroup", "ARKA_SUE_CreateContactManagerField", "ARKA_SUE_DatechFieldValidation", "ARKA_SUE_DisplayWarningEstMessage", "ARKA_SUE_DuplicateEstimate", "ARKA_SUE_LimitTransactionStatus", "ARKA_SUE_NBEPersonas", "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate", "ARKA_CUE_WarningOnTransaction"],
                                     },
                             })
                             
@@ -127,8 +127,8 @@
                                         if (typeof ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.beforeSubmit === 'function') {
                                             await ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.beforeSubmit(scriptContext);
                                         }
-                                        if (typeof ARKA_SUE_WarningOnTransaction.beforeSubmit === 'function') {
-                                            await ARKA_SUE_WarningOnTransaction.beforeSubmit(scriptContext);
+                                        if (typeof ARKA_CUE_WarningOnTransaction.beforeSubmit === 'function') {
+                                            await ARKA_CUE_WarningOnTransaction.beforeSubmit(scriptContext);
                                         }
                             
                         } catch (err) {
@@ -149,7 +149,7 @@
                                 title: 'UserEventScript',
                                 details: {
                                     title: 'Running the afterSubmit entrypoint from the dispatcher file ./FileCabinet/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher2',
-                                    scriptsLoaded: ["ARKA_SUE_AddSyncQuoteButton", "ARKA_SUE_AutodeskNxmFieldValidation", "ARKA_SUE_BluebeamHandleDynamicSalesRep", "ARKA_SUE_CalculateExtendedCostAndPoRate", "ARKA_SUE_CheckOutsideItemGroup", "ARKA_SUE_CreateContactManagerField", "ARKA_SUE_DatechFieldValidation", "ARKA_SUE_DisplayWarningEstMessage", "ARKA_SUE_DuplicateEstimate", "ARKA_SUE_LimitTransactionStatus", "ARKA_SUE_NBEPersonas", "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate", "ARKA_SUE_WarningOnTransaction"],
+                                    scriptsLoaded: ["ARKA_SUE_AddSyncQuoteButton", "ARKA_SUE_AutodeskNxmFieldValidation", "ARKA_SUE_BluebeamHandleDynamicSalesRep", "ARKA_SUE_CalculateExtendedCostAndPoRate", "ARKA_SUE_CheckOutsideItemGroup", "ARKA_SUE_CreateContactManagerField", "ARKA_SUE_DatechFieldValidation", "ARKA_SUE_DisplayWarningEstMessage", "ARKA_SUE_DuplicateEstimate", "ARKA_SUE_LimitTransactionStatus", "ARKA_SUE_NBEPersonas", "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate", "ARKA_CUE_WarningOnTransaction"],
                                     },
                             })
                             
@@ -190,8 +190,8 @@
                                         if (typeof ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.afterSubmit === 'function') {
                                             await ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.afterSubmit(scriptContext);
                                         }
-                                        if (typeof ARKA_SUE_WarningOnTransaction.afterSubmit === 'function') {
-                                            await ARKA_SUE_WarningOnTransaction.afterSubmit(scriptContext);
+                                        if (typeof ARKA_CUE_WarningOnTransaction.afterSubmit === 'function') {
+                                            await ARKA_CUE_WarningOnTransaction.afterSubmit(scriptContext);
                                         }
                             
                         } catch (err) {
