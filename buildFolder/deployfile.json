@@ -1,77 +1,80 @@
 [
-    {
-        "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js",
-        "objectPath": "./Objects/Estimate/customscript_sue_est_dispatcher1.xml",
-        "recordType": "Estimate",
-        "scriptType": "UserEventScript",
-        "dispatcherFilesContents": ["ARKA_SUE_RenewalProcessEshopNetSuite", "ARKA_SUE_SetContractNumber"],
-        "dispatcherFilesContentsPath": [
-            "./SuiteScripts/ARKA_SUE_RenewalProcessEshopNetSuite.js",
-            "./SuiteScripts/ARKA_SUE_SetContractNumber.js"
-        ]
-    },
-    {
-        "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher2.js",
-        "objectPath": "./Objects/Estimate/customscript_sue_est_dispatcher2.xml",
-        "recordType": "Estimate",
-        "scriptType": "UserEventScript",
-        "dispatcherFilesContents": [
-            "ARKA_SUE_AddSyncQuoteButton",
-            "ARKA_SUE_AutodeskNxmFieldValidation",
-            "ARKA_SUE_BluebeamHandleDynamicSalesRep",
-            "ARKA_SUE_CalculateExtendedCostAndPoRate",
-            "ARKA_SUE_CheckOutsideItemGroup",
-            "ARKA_SUE_CreateContactManagerField",
-            "ARKA_SUE_DatechFieldValidation",
-            "ARKA_SUE_DisplayWarningEstMessage",
-            "ARKA_SUE_DuplicateEstimate",
-            "ARKA_SUE_LimitTransactionStatus",
-            "ARKA_SUE_NBEPersonas",
-            "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate",
-            "ARKA_SUE_WarningOnTransaction"
-        ],
-        "dispatcherFilesContentsPath": [
-            "./SuiteScripts/ARKA_SUE_AddSyncQuoteButton.js",
-            "./SuiteScripts/ARKA_SUE_AutodeskNxmFieldValidation.js",
-            "./SuiteScripts/ARKA_SUE_BluebeamHandleDynamicSalesRep.js",
-            "./SuiteScripts/ARKA_SUE_CalculateExtendedCostAndPoRate.js",
-            "./SuiteScripts/ARKA_SUE_CheckOutsideItemGroup.js",
-            "./SuiteScripts/ARKA_SUE_CreateContactManagerField.js",
-            "./SuiteScripts/ARKA_SUE_DatechFieldValidation.js",
-            "./SuiteScripts/ARKA_SUE_DisplayWarningEstMessage.js",
-            "./SuiteScripts/ARKA_SUE_DuplicateEstimate.js",
-            "./SuiteScripts/ARKA_SUE_LimitTransactionStatus.js",
-            "./SuiteScripts/ARKA_SUE_NBEPersonas.js",
-            "./SuiteScripts/ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js",
-            "./SuiteScripts/ARKA_SUE_WarningOnTransaction.js"
-        ]
-    },
-    {
-        "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1.js",
-        "objectPath": "./Objects/Estimate/customscript_cue_est_dispatcher1.xml",
-        "recordType": "Estimate",
-        "scriptType": "ClientScript",
-        "dispatcherFilesContents": [
-            "ARKA_CUE_FutureGroupValidations",
-            "ARKA_CUE_BluebeamHandleDynamicSalesRep",
-            "ARKA_CUE_fillContactOptions",
-            "ARKA_CUE_NBEPersonas",
-            "ARKA_CUE_TenderCheckboxControl",
-            "ARKA_CUE_TransactionDepValidation",
-            "ARKA_CUE_RemoveCustomerStatuses",
-            "ARKA_CUE_SetExpectedCloseDateField",
-            "ARKA_EST_SetContractFields"
-        ],
-        "dispatcherFilesContentsPath": [
-            "./SuiteScripts/ARKA_CUE_FutureGroupValidations.js",
-            "./SuiteScripts/ARKA_CUE_BluebeamHandleDynamicSalesRep.js",
-            "./SuiteScripts/ARKA_CUE_fillContactOptions.js",
-            "./SuiteScripts/ARKA_CUE_NBEPersonas.js",
-            "./SuiteScripts/ARKA_CUE_TenderCheckboxControl.js",
-            "./SuiteScripts/ARKA_CUE_TransactionDepValidation.js",
-            "./SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js",
-            "./SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js",
-            "./SuiteScripts/ARKA_EST_SetContractFields.js"
-        ]
-    }
+  {
+    "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher1.js",
+    "objectPath": "./Objects/Estimate/customscript_sue_est_dispatcher1.xml",
+    "recordType": "Estimate",
+    "scriptType": "UserEventScript",
+    "dispatcherFilesContents": [
+      "ARKA_SUE_RenewalProcessEshopNetSuite",
+      "ARKA_SUE_SetContractNumber"
+    ],
+    "dispatcherFilesContentsPath": [
+      "./SuiteScripts/ARKA_SUE_RenewalProcessEshopNetSuite.js",
+      "./SuiteScripts/ARKA_SUE_SetContractNumber.js"
+    ]
+  },
+  {
+    "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/User Event Scripts/ARKA_SUE_Est_dispatcher2.js",
+    "objectPath": "./Objects/Estimate/customscript_sue_est_dispatcher2.xml",
+    "recordType": "Estimate",
+    "scriptType": "UserEventScript",
+    "dispatcherFilesContents": [
+      "ARKA_SUE_AddSyncQuoteButton",
+      "ARKA_SUE_AutodeskNxmFieldValidation",
+      "ARKA_SUE_BluebeamHandleDynamicSalesRep",
+      "ARKA_SUE_CalculateExtendedCostAndPoRate",
+      "ARKA_SUE_CheckOutsideItemGroup",
+      "ARKA_SUE_CreateContactManagerField",
+      "ARKA_SUE_DatechFieldValidation",
+      "ARKA_SUE_DisplayWarningEstMessage",
+      "ARKA_SUE_DuplicateEstimate",
+      "ARKA_SUE_LimitTransactionStatus",
+      "ARKA_SUE_NBEPersonas",
+      "ARKA_SUE_SetExpectedCloseDateFieldOnEstimate",
+      "ARKA_SUE_WarningOnTransaction"
+    ],
+    "dispatcherFilesContentsPath": [
+      "./SuiteScripts/ARKA_SUE_AddSyncQuoteButton.js",
+      "./SuiteScripts/ARKA_SUE_AutodeskNxmFieldValidation.js",
+      "./SuiteScripts/ARKA_SUE_BluebeamHandleDynamicSalesRep.js",
+      "./SuiteScripts/ARKA_SUE_CalculateExtendedCostAndPoRate.js",
+      "./SuiteScripts/ARKA_SUE_CheckOutsideItemGroup.js",
+      "./SuiteScripts/ARKA_SUE_CreateContactManagerField.js",
+      "./SuiteScripts/ARKA_SUE_DatechFieldValidation.js",
+      "./SuiteScripts/ARKA_SUE_DisplayWarningEstMessage.js",
+      "./SuiteScripts/ARKA_SUE_DuplicateEstimate.js",
+      "./SuiteScripts/ARKA_SUE_LimitTransactionStatus.js",
+      "./SuiteScripts/ARKA_SUE_NBEPersonas.js",
+      "./SuiteScripts/ARKA_SUE_SetExpectedCloseDateFieldOnEstimate.js",
+      "./SuiteScripts/ARKA_SUE_WarningOnTransaction.js"
+    ]
+  },
+  {
+    "scriptPath": "/SuiteScripts/Codes/Scripts/Records/Estimate/Client Scripts/ARKA_CUE_Est_dispatcher1.js",
+    "objectPath": "./Objects/Estimate/customscript_cue_est_dispatcher1.xml",
+    "recordType": "Estimate",
+    "scriptType": "ClientScript",
+    "dispatcherFilesContents": [
+      "ARKA_CUE_FutureGroupValidations",
+      "ARKA_CUE_BluebeamHandleDynamicSalesRep",
+      "ARKA_CUE_fillContactOptions",
+      "ARKA_CUE_NBEPersonas",
+      "ARKA_CUE_TenderCheckboxControl",
+      "ARKA_CUE_TransactionDepValidation",
+      "ARKA_CUE_RemoveCustomerStatuses",
+      "ARKA_CUE_SetExpectedCloseDateField",
+      "ARKA_EST_SetContractFields"
+    ],
+    "dispatcherFilesContentsPath": [
+      "./SuiteScripts/ARKA_CUE_FutureGroupValidations.js",
+      "./SuiteScripts/ARKA_CUE_BluebeamHandleDynamicSalesRep.js",
+      "./SuiteScripts/ARKA_CUE_fillContactOptions.js",
+      "./SuiteScripts/ARKA_CUE_NBEPersonas.js",
+      "./SuiteScripts/ARKA_CUE_TenderCheckboxControl.js",
+      "./SuiteScripts/ARKA_CUE_TransactionDepValidation.js",
+      "./SuiteScripts/ARKA_CUE_RemoveCustomerStatuses.js",
+      "./SuiteScripts/ARKA_CUE_SetExpectedCloseDateField.js",
+      "./SuiteScripts/ARKA_EST_SetContractFields.js"
+    ]
+  }
 ]
